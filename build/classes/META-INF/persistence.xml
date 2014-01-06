@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="SensorCity" transaction-type="RESOURCE_LOCAL">
+		<class>Sensors.AtmPressure</class>
+		<class>Sensors.Audio</class>
+		<class>Sensors.GPS</class>
+		<class>Sensors.Humidity</class>
+		<class>Sensors.Luminosity</class>
+		<class>Sensors.Sensor</class>
+		<class>Sensors.Temperature</class>
+		<class>main.Address</class>
+		<class>main.Comment</class>
+		<class>main.Users</class>
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sun-appserv-samples;create=true"/>
+			<property name="javax.persistence.jdbc.user" value="APP"/>
+			<property name="javax.persistence.jdbc.password" value="APP"/>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+		</properties>
+	</persistence-unit>
+</persistence>
