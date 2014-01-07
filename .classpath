@@ -11,6 +11,6 @@
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/johnnatanmessias/MacDevelopment/glassfish4/javadb/lib/derbyclient.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCity/lib/derbyclient.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
