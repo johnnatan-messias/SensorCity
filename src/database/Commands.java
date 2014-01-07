@@ -33,6 +33,7 @@ public class Commands {
 	public static String selectAllTopicsOnBoard = "SELECT t FROM Topic t WHERE t.board.idBoard = :idBoard";
 	public static String selectAllPostsOnTopic = "SELECT p FROM Post p WHERE p.topic.id = :idTopic";
 
-
+	public static String selectAddressUser = "SELECT a FROM Address a, User u WHERE u.address = a.id AND u.id = :idUser";
+	
 
 }

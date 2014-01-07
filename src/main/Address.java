@@ -2,8 +2,10 @@ package main;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -12,14 +14,21 @@ import Sensors.Sensor;
 @Entity
 public class Address {
 	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
+	@Column(nullable = false)
 	private String zip;
+	@Column(nullable = false)
 	private String street;
 	private int num;
 	private String ap;
+	@Column(nullable = false)
 	private String city;
+	@Column(nullable = false)
 	private String state;
+	@Column(nullable = false)
 	private String country;
+	@Column(nullable = false)
 	private String neighbour;
 	
 	@OneToMany(mappedBy = "address")

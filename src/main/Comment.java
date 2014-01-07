@@ -2,6 +2,7 @@ package main;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id; // Primary key
+	@Column(nullable = false)
 	private String title;
 	private String message;
 	

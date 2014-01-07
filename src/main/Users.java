@@ -2,6 +2,7 @@ package main;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,16 @@ public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id; // primary key
+	@Column(unique = true, nullable = false)
 	private String document; // unique
+	@Column(nullable = false)
 	private String fstname;
+	@Column(nullable = false)
 	private String sndname;
 	private String profession;
+	@Column(nullable = false)
 	private int age;
+	@Column(nullable = false)
 	private String email;
 	private String facebook;
 	private int phone;
