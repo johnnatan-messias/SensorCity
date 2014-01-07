@@ -1,7 +1,18 @@
 package database;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import main.Address;
+import main.Users;
+import Sensors.AtmPressure;
+import Sensors.Audio;
+import Sensors.GPS;
+import Sensors.Humidity;
+import Sensors.Luminosity;
+import Sensors.Sensor;
+import Sensors.Temperature;
 
 
 public class Database {
@@ -22,7 +33,120 @@ public class Database {
 		}
 		return db;
 	}
+	
+	public int insertUser(Users user){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(user);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+		return user.getId();
+	}
+	
+	public int insertAddress(Address address){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(address);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+		return address.getId();
+	}
 
+	public void insertAddress(Sensor sensor){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(sensor);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void insertGPS(GPS gps){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(gps);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void insertAudio(Audio audio){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(audio);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void insertHumidity(Humidity humidity){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(humidity);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void insertAtmPressure(AtmPressure atmPressure){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(atmPressure);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void insertLuminosity(Luminosity luminosity){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(luminosity);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void insertTemperature(Temperature temperature){
+		EntityManager em = null;
+		try{
+			em = emf.createEntityManager();
+			em.getTransaction().begin();
+			em.persist(temperature);
+			em.getTransaction().commit();
+		}catch(Exception e){
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	
+	
+	
 	/*
 	public int insertBoard(String nameBoard) {
 		Board board = null;

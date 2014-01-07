@@ -32,6 +32,23 @@ public class Users {
 
 	public Users() {
 	}
+	
+	
+	public Users(int id, String document, String fstname, String sndname,
+			String profession, int age, String email, String facebook,
+			int phone, Address address) {
+		this.id = id;
+		this.document = document;
+		this.fstname = fstname;
+		this.sndname = sndname;
+		this.profession = profession;
+		this.age = age;
+		this.email = email;
+		this.facebook = facebook;
+		this.phone = phone;
+		this.address = address;
+	}
+	
 
 	public Users(int id, String document, String fstname, String sndname,
 			String profession, int age, String email, String facebook,
