@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import com.sun.xml.internal.txw2.annotation.XmlElement;
+
 @Entity
+@XmlElement
 public class Users implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
@@ -37,20 +40,6 @@ public class Users implements Serializable {
 	public Users() {
 	}
 
-	public Users(int id, String document, String fstname, String sndname,
-			String profession, int age, String email, String facebook,
-			int phone, Address address) {
-		this.id = id;
-		this.document = document;
-		this.fstname = fstname;
-		this.sndname = sndname;
-		this.profession = profession;
-		this.age = age;
-		this.email = email;
-		this.facebook = facebook;
-		this.phone = phone;
-		this.address = address;
-	}
 
 	public int getId() {
 		return id;

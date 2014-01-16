@@ -10,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import Sensors.Sensor;
 
 @Entity
+@XmlRootElement
 public class Address implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
@@ -42,22 +44,6 @@ public class Address implements Serializable {
 	private List<Sensor> sensors; // 1 Sensor just can have 1 Address.
 
 	public Address() {
-	}
-
-	public Address(int id, String zip, String street, int num, String ap,
-			String city, String state, String country, String neighbour,
-			List<Users> users, List<Sensor> sensors) {
-		this.id = id;
-		this.zip = zip;
-		this.street = street;
-		this.num = num;
-		this.ap = ap;
-		this.city = city;
-		this.state = state;
-		this.country = country;
-		this.neighbour = neighbour;
-		this.users = users;
-		this.sensors = sensors;
 	}
 
 	public int getId() {

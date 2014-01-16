@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	<persistence-unit name="SensorCity" transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>jdbc/__default</jta-data-source>
+		<class>Sensors.AtmPressure</class>
+		<class>Sensors.Audio</class>
+		<class>Sensors.GPS</class>
+		<class>Sensors.Humidity</class>
+		<class>Sensors.Luminosity</class>
+		<class>Sensors.Sensor</class>
+		<class>Sensors.Temperature</class>
+		<class>kernel.Address</class>
+		<class>kernel.Users</class>
+		<properties>
+			<property name="eclipselink.logging.level" value="FINEST" />
+			<property name="eclipselink.logging.level.ejb_or_metadata"
+				value="WARNING" />
+			<property name="eclipselink.logging.timestamp" value="false" />
+			<property name="eclipselink.logging.thread" value="false" />
+			<property name="eclipselink.logging.session" value="false" />
+			<property name="eclipselink.logging.exceptions" value="false" />
+			<!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables" 
+				/> -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+		</properties>
+	</persistence-unit>
+</persistence>

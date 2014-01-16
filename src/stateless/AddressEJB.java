@@ -6,10 +6,9 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Named;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import kernel.Address;
@@ -23,11 +22,9 @@ import database.Commands;
 
 @Stateless
 @LocalBean
-@WebService
-@Named
 public class AddressEJB implements AddressEJBRemote {
 
-	@PersistenceContext(unitName = "SensorCity")
+	@PersistenceContext(unitName = "SensorCity", type = PersistenceContextType.TRANSACTION)
 	private EntityManager em;
 
 	@Override
@@ -37,7 +34,7 @@ public class AddressEJB implements AddressEJBRemote {
 	}
 
 	@Override
-	public Address findAddressById(int id) {
+	public Address findAddressById(long id) {
 		return em.find(Address.class, id);
 	}
 
@@ -65,14 +62,14 @@ public class AddressEJB implements AddressEJBRemote {
 	}
 
 	@Override
-	public List<Users> findUsersByAddress(int id) {
+	public List<Users> findUsersByAddress(long id) {
 		Query query = em.createQuery(Commands.findUsersByAddress);
 		query.setParameter(Commands.id, id);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Sensor> findSensorByAddress(int id) {
+	public List<Sensor> findSensorByAddress(long id) {
 		Query query = em.createQuery(Commands.findSensorByAddress);
 		query.setParameter(Commands.id, id);
 		return query.getResultList();

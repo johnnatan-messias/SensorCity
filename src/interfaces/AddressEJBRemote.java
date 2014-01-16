@@ -11,11 +11,11 @@ import kernel.Users;
 @Remote
 public interface AddressEJBRemote {
 	List<Address> findAddress();
-	Address findAddressById(int id);
+	Address findAddressById(long id);
 	List<Address> findAddressByStreet(String street);
 	Address createAddress(Address address);
 	void deleteAddress(Address address);
 	Address updateAddress(Address address);
-	List<Users> findUsersByAddress(int id);
-	List<Sensor> findSensorByAddress(int id);
+	List<Users> findUsersByAddress(long id);
+	List<Sensor> findSensorByAddress(long id);
 }

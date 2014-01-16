@@ -17,11 +17,6 @@ public class Audio implements Serializable {
 	public Audio() {
 	}
 
-	public Audio(int id, long value) {
-		this.id = id;
-		this.value = value;
-	}
-
 	public int getId() {
 		return id;
 	}

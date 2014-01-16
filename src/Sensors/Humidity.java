@@ -17,11 +17,6 @@ public class Humidity implements Serializable {
 	public Humidity() {
 	}
 
-	public Humidity(int id, long value) {
-		this.id = id;
-		this.value = value;
-	}
-
 	public int getId() {
 		return id;
 	}

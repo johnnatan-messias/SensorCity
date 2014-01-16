@@ -6,10 +6,9 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Named;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import Sensors.GPS;
@@ -18,11 +17,9 @@ import database.Commands;
 
 @Stateless
 @LocalBean
-@WebService
-@Named
 public class GPSEJB implements GPSEJBRemote {
 
-	@PersistenceContext(unitName = "SensorCity")
+	@PersistenceContext(unitName = "SensorCity", type = PersistenceContextType.TRANSACTION)
 	private EntityManager em;
 
 	@Override
@@ -32,7 +29,7 @@ public class GPSEJB implements GPSEJBRemote {
 	}
 
 	@Override
-	public GPS findGPSById(int id) {
+	public GPS findGPSById(long id) {
 		return em.find(GPS.class, id);
 	}
 

@@ -6,10 +6,9 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Named;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import Sensors.AtmPressure;
@@ -18,11 +17,9 @@ import database.Commands;
 
 @Stateless
 @LocalBean
-@WebService
-@Named
 public class AtmPressureEJB implements AtmPressureEJBRemote {
 
-	@PersistenceContext(unitName = "SensorCity")
+	@PersistenceContext(unitName = "SensorCity", type = PersistenceContextType.TRANSACTION)
 	private EntityManager em;
 
 	@Override
@@ -33,7 +30,7 @@ public class AtmPressureEJB implements AtmPressureEJBRemote {
 	}
 
 	@Override
-	public AtmPressure findAtmPressureById(int id) {
+	public AtmPressure findAtmPressureById(long id) {
 		return em.find(AtmPressure.class, id);
 	}
 

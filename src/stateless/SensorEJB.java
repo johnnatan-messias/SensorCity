@@ -6,10 +6,9 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Named;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import Sensors.Sensor;
@@ -17,11 +16,9 @@ import database.Commands;
 
 @Stateless
 @LocalBean
-@WebService
-@Named
 public class SensorEJB implements SensorEJBRemote {
 
-	@PersistenceContext(unitName = "SensorCity")
+	@PersistenceContext(unitName = "SensorCity", type = PersistenceContextType.TRANSACTION)
 	private EntityManager em;
 
 	@Override
@@ -31,7 +28,7 @@ public class SensorEJB implements SensorEJBRemote {
 	}
 
 	@Override
-	public Sensor findSensorById(int id) {
+	public Sensor findSensorById(long id) {
 		return em.find(Sensor.class, id);
 	}
 
@@ -59,7 +56,7 @@ public class SensorEJB implements SensorEJBRemote {
 	}
 
 	@Override
-	public boolean[] findFunctionalities(int id) {
+	public boolean[] findFunctionalities(long id) {
 		boolean[] functionalities = new boolean[6];
 		Query query;
 

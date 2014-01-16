@@ -17,11 +17,6 @@ public class Luminosity implements Serializable {
 	public Luminosity() {
 	}
 
-	public Luminosity(int id, long value) {
-		this.id = id;
-		this.value = value;
-	}
-
 	public int getId() {
 		return id;
 	}

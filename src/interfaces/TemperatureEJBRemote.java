@@ -10,7 +10,7 @@ import Sensors.Temperature;
 @Remote
 public interface TemperatureEJBRemote {
 	List<Temperature> findTemperature();
-	Temperature findTemperatureById(int id);
+	Temperature findTemperatureById(long id);
 	Temperature createTemperature(Temperature temperature);
 	void deleteTemperature(Temperature temperature);
 	Temperature updateTemperature(Temperature temperature);

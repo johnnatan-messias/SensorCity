@@ -10,7 +10,7 @@ import Sensors.Sensor;
 @Remote
 public interface LuminosityEJBRemote {
 	List<Luminosity> findLuminosity();
-	Luminosity findLuminosityById(int id);
+	Luminosity findLuminosityById(long id);
 	Luminosity createLuminosity(Luminosity luminosity);
 	void deleteLuminosity(Luminosity luminosity);
 	Luminosity updateLuminosity(Luminosity luminosity);

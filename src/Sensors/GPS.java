@@ -18,12 +18,6 @@ public class GPS implements Serializable {
 	public GPS() {
 	}
 
-	public GPS(int id, long latitude, long longitude) {
-		this.id = id;
-		this.latitude = latitude;
-		this.longitude = longitude;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -48,6 +42,4 @@ public class GPS implements Serializable {
 		this.longitude = longitude;
 	}
 
-	
-	
 }

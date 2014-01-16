@@ -10,7 +10,7 @@ import Sensors.Sensor;
 @Remote
 public interface AudioEJBRemote {
 	List<Audio> findAudio();
-	Audio findAudioById(int id);
+	Audio findAudioById(long id);
 	Audio createAudio(Audio audio);
 	void deleteAudio(Audio audio);
 	Audio updateAudio(Audio audio);

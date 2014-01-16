@@ -10,7 +10,7 @@ import Sensors.Sensor;
 @Remote
 public interface GPSEJBRemote {
 	List<GPS> findGPS();
-	GPS findGPSById(int id);
+	GPS findGPSById(long id);
 	GPS createGPS(GPS gps);
 	void deleteGPS(GPS gps);
 	GPS updateGPS(GPS gps);

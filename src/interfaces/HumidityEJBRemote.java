@@ -10,7 +10,7 @@ import Sensors.Sensor;
 @Remote
 public interface HumidityEJBRemote {
 	List<Humidity> findHumidity();
-	Humidity findHumidityById(int id);
+	Humidity findHumidityById(long id);
 	Humidity createHumidity(Humidity humidity);
 	void deleteHumidity(Humidity humidity);
 	Humidity updateHumidity(Humidity humidity);

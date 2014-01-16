@@ -17,11 +17,6 @@ public class AtmPressure implements Serializable {
 	public AtmPressure() {
 	}
 
-	public AtmPressure(int id, long value) {
-		this.id = id;
-		this.value = value;
-	}
-
 	public int getId() {
 		return id;
 	}

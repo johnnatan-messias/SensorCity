@@ -9,10 +9,10 @@ import Sensors.Sensor;
 @Remote
 public interface SensorEJBRemote {
 	List<Sensor> findSensor();
-	Sensor findSensorById(int id);
+	Sensor findSensorById(long id);
 	Sensor findSensorByName(String name);
 	Sensor createSensor(Sensor sensor);
 	void deleteSensor(Sensor sensor);
 	Sensor updateSensor(Sensor sensor);
-	boolean[] findFunctionalities(int id);
+	boolean[] findFunctionalities(long id);
 }

@@ -15,11 +15,7 @@ public class Temperature implements Serializable {
 	private long value;
 
 	public Temperature() {
-	}
 
-	public Temperature(int id, long value) {
-		this.id = id;
-		this.value = value;
 	}
 
 	public int getId() {

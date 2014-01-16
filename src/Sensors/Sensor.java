@@ -13,6 +13,8 @@ import javax.persistence.Transient;
 
 import kernel.Address;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 @Entity
 public class Sensor implements Serializable {
 	@Transient
@@ -31,12 +33,6 @@ public class Sensor implements Serializable {
 	public Sensor() {
 	}
 
-	public Sensor(int id, String name, Address address) {
-		this.id = id;
-		this.name = name;
-		this.address = address;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -45,6 +41,7 @@ public class Sensor implements Serializable {
 		this.id = id;
 	}
 
+	@XmlInverseReference(mappedBy = "sensors")
 	public Address getAddress() {
 		return address;
 	}
