@@ -15,8 +15,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import util.ControllerClassesService;
 import Sensors.Sensor;
 import Sensors.Temperature;
+import data.TemperatureData;
 
 @Path("/sensor/type/temperature")
 @Produces(MediaType.APPLICATION_XML)
@@ -27,17 +29,22 @@ public class TemperatureService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(Temperature temperature) {
+	public void create(TemperatureData temperature) {
 		System.out.println("createTemperature");
-		temperatureEJB.createTemperature(temperature);
+		temperatureEJB.createTemperature(ControllerClassesService
+				.toTemperature(temperature));
+
 	}
 
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public Temperature read(@QueryParam("id") long id) {
+	public TemperatureData read(@QueryParam("id") long id) {
 		System.out.println("readTemperature");
-		return temperatureEJB.findTemperatureById(id);
+		Temperature temp = temperatureEJB.findTemperatureById(id);
+		TemperatureData temperature = ControllerClassesService
+				.toTemperatureData(temp);
+		return temperature;
 	}
 
 	@PUT

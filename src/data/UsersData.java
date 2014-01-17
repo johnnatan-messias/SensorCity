@@ -1,42 +1,34 @@
-package kernel;
+package data;
 
-import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
-@Entity
-public class Users implements Serializable {
-	@Transient
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	private long id; // primary key
-	@Column(unique = true, nullable = false)
-	private String document; // unique
-	@Column(nullable = false)
+@XmlRootElement
+public class UsersData {
+
+	private long id;
+
+	private String document;
+
 	private String fstname;
-	@Column(nullable = false)
+
 	private String sndname;
 	private String profession;
-	@Column(nullable = false)
+
 	private long age;
-	@Column(nullable = false)
+
 	private String email;
 	private String facebook;
 	private long phone;
 
-	@ManyToOne
-	protected Address address;
+	protected AddressData address;
 
-	public Users() {
+	public UsersData() {
 	}
 
+	@XmlAttribute(name = "id")
 	public long getId() {
 		return id;
 	}
@@ -73,7 +65,8 @@ public class Users implements Serializable {
 		return phone;
 	}
 
-	public Address getAddress() {
+	@XmlInverseReference(mappedBy = "users")
+	public AddressData getAddress() {
 		return address;
 	}
 
@@ -113,7 +106,7 @@ public class Users implements Serializable {
 		this.phone = phone;
 	}
 
-	public void setAddress(Address address) {
+	public void setAddress(AddressData address) {
 		this.address = address;
 	}
 

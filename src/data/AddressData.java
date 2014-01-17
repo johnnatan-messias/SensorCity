@@ -1,51 +1,38 @@
-package kernel;
+package data;
 
-import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import Sensors.Sensor;
+@XmlRootElement
+public class AddressData {
 
-@Entity
-public class Address implements Serializable {
-	@Transient
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
 	private long id;
-	@Column(nullable = false)
 	private String zip;
-	@Column(nullable = false)
 	private String street;
 	private long num;
 	private String ap;
-	@Column(nullable = false)
 	private String city;
-	@Column(nullable = false)
 	private String state;
-	@Column(nullable = false)
 	private String country;
-	@Column(nullable = false)
 	private String neighbour;
 
-	@OneToMany(mappedBy = "address")
-	private List<Users> users; // 1 User just can have 1 Address. 1 Address can
+	@XmlElementWrapper(name = "users")
+	@XmlElement(name = "user")
+	private List<UsersData> users; // 1 User just can have 1 Address. 1 Address
+									// can
 
-	// be the localization of N Users.
-	@OneToMany(mappedBy = "address")
-	private List<Sensor> sensors; // 1 Sensor just can have 1 Address.
+	@XmlElementWrapper(name = "sensors")
+	@XmlElement(name = "sensor")
+	private List<SensorData> sensors; // 1 Sensor just can have 1 Address.
 
-	public Address() {
+	public AddressData() {
 	}
 
+	@XmlAttribute(name = "id")
 	public long getId() {
 		return id;
 	}
@@ -82,11 +69,11 @@ public class Address implements Serializable {
 		return neighbour;
 	}
 
-	public List<Users> getUsers() {
+	public List<UsersData> getUsers() {
 		return users;
 	}
 
-	public List<Sensor> getSensors() {
+	public List<SensorData> getSensors() {
 		return sensors;
 	}
 
@@ -126,11 +113,11 @@ public class Address implements Serializable {
 		this.neighbour = neighbour;
 	}
 
-	public void setUsers(List<Users> users) {
+	public void setUsers(List<UsersData> users) {
 		this.users = users;
 	}
 
-	public void setSensors(List<Sensor> sensors) {
+	public void setSensors(List<SensorData> sensors) {
 		this.sensors = sensors;
 	}
 

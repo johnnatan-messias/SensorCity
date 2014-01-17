@@ -10,15 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import kernel.Address;
 
-import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
-
 @Entity
-@XmlRootElement
 public class Sensor implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
@@ -36,7 +30,6 @@ public class Sensor implements Serializable {
 	public Sensor() {
 	}
 
-	@XmlAttribute(name = "id")
 	public long getId() {
 		return id;
 	}
@@ -45,7 +38,6 @@ public class Sensor implements Serializable {
 		this.id = id;
 	}
 
-	@XmlInverseReference(mappedBy = "sensors")
 	public Address getAddress() {
 		return address;
 	}

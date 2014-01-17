@@ -1,21 +1,14 @@
-package Sensors;
+package data;
 
-import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-
-@Entity
-public class GPS implements Serializable {
-	@Transient
-	private static final long serialVersionUID = 1L;
-	@Id
+@XmlRootElement
+public class GPSData {
 	private long id;
 	private long latitude;
 	private long longitude;
 
-	public GPS() {
+	public GPSData() {
 	}
 
 	public long getId() {
