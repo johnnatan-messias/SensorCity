@@ -9,13 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
-import com.sun.xml.internal.txw2.annotation.XmlElement;
-
 @Entity
-@XmlElement
+@XmlRootElement
 public class Users implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
@@ -42,6 +42,7 @@ public class Users implements Serializable {
 	public Users() {
 	}
 
+	@XmlAttribute(name = "id")
 	public long getId() {
 		return id;
 	}
