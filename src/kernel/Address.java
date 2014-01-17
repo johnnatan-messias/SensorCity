@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import Sensors.Sensor;
@@ -21,12 +23,12 @@ public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int id;
+	private long id;
 	@Column(nullable = false)
 	private String zip;
 	@Column(nullable = false)
 	private String street;
-	private int num;
+	private long num;
 	private String ap;
 	@Column(nullable = false)
 	private String city;
@@ -37,16 +39,20 @@ public class Address implements Serializable {
 	@Column(nullable = false)
 	private String neighbour;
 
+	@XmlElementWrapper(name = "users")
+	@XmlElement(name = "user")
 	@OneToMany(mappedBy = "address")
 	private List<Users> users; // 1 User just can have 1 Address. 1 Address can
-								// be the localozation of N Users.
+	
+	@XmlElementWrapper(name = "sensors")// be the localozation of N Users.
+	@XmlElement(name = "sensor")
 	@OneToMany(mappedBy = "address")
 	private List<Sensor> sensors; // 1 Sensor just can have 1 Address.
 
 	public Address() {
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -58,7 +64,7 @@ public class Address implements Serializable {
 		return street;
 	}
 
-	public int getNum() {
+	public long getNum() {
 		return num;
 	}
 
@@ -90,7 +96,7 @@ public class Address implements Serializable {
 		return sensors;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -102,7 +108,7 @@ public class Address implements Serializable {
 		this.street = street;
 	}
 
-	public void setNum(int num) {
+	public void setNum(long num) {
 		this.num = num;
 	}
 

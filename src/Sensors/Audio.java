@@ -5,23 +5,25 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 @Entity
 public class Audio implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
 	@Id
-	private int id;
+	private long id;
 	private long value;
 
 	public Audio() {
+
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

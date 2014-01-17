@@ -21,7 +21,7 @@ public class Sensor implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	protected int id;
+	protected long id;
 	@Column(unique = true, nullable = false)
 	protected String name;
 
@@ -33,11 +33,11 @@ public class Sensor implements Serializable {
 	public Sensor() {
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

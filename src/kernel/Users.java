@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import com.sun.xml.internal.txw2.annotation.XmlElement;
 
 @Entity
@@ -19,7 +21,7 @@ public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	private int id; // primary key
+	private long id; // primary key
 	@Column(unique = true, nullable = false)
 	private String document; // unique
 	@Column(nullable = false)
@@ -28,11 +30,11 @@ public class Users implements Serializable {
 	private String sndname;
 	private String profession;
 	@Column(nullable = false)
-	private int age;
+	private long age;
 	@Column(nullable = false)
 	private String email;
 	private String facebook;
-	private int phone;
+	private long phone;
 
 	@ManyToOne
 	protected Address address;
@@ -40,8 +42,7 @@ public class Users implements Serializable {
 	public Users() {
 	}
 
-
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -61,7 +62,7 @@ public class Users implements Serializable {
 		return profession;
 	}
 
-	public int getAge() {
+	public long getAge() {
 		return age;
 	}
 
@@ -73,15 +74,16 @@ public class Users implements Serializable {
 		return facebook;
 	}
 
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
 
+	@XmlInverseReference(mappedBy = "users")
 	public Address getAddress() {
 		return address;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -101,7 +103,7 @@ public class Users implements Serializable {
 		this.profession = profession;
 	}
 
-	public void setAge(int age) {
+	public void setAge(long age) {
 		this.age = age;
 	}
 
@@ -113,7 +115,7 @@ public class Users implements Serializable {
 		this.facebook = facebook;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 

@@ -1,8 +1,8 @@
 package services;
 
 import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
 
-import com.apple.eawt.Application;
 
 @ApplicationPath("/rest")
 public class App extends Application {

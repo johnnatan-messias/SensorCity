@@ -11,17 +11,17 @@ public class AtmPressure implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
 	@Id
-	private int id;
+	private long id;
 	private long value;
 
 	public AtmPressure() {
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

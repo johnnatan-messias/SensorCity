@@ -17,7 +17,7 @@ import Sensors.Temperature;
 public class Database {
 	/* I need to check if delete methods are ok */
 	/* I have problems with insertion topic and post */
-
+	//jdbc:derby://localhost:1527/sun-appserv-samples;create=true
 	private static Database db = null;
 	private EntityManagerFactory emf = null;
 
@@ -33,7 +33,7 @@ public class Database {
 		return db;
 	}
 
-	public int insertUser(Users user) {
+	public long insertUser(Users user) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -46,7 +46,7 @@ public class Database {
 		return user.getId();
 	}
 
-	public int insertAddress(Address address) {
+	public long insertAddress(Address address) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
