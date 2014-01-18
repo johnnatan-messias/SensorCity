@@ -15,12 +15,7 @@ import java.text.SimpleDateFormat;
 
 import javax.ejb.EJB;
 
-import stateless.AtmPressureEJB;
-import stateless.AudioEJB;
-import stateless.HumidityEJB;
-import stateless.LuminosityEJB;
 import stateless.SensorEJB;
-import stateless.TemperatureEJB;
 import Sensors.AtmPressure;
 import Sensors.Audio;
 import Sensors.Humidity;

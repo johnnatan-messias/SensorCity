@@ -13,5 +13,22 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/asm-all-repackaged-2.2.0-b21.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/cglib-2.2.0-b21.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/guava-14.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/hk2-api-2.2.0-b21.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/hk2-locator-2.2.0-b21.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/hk2-utils-2.2.0-b21.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/javax.inject-2.2.0-b21.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/javax.ws.rs-api-2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/jaxb-api-2.2.7.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/jersey-client.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/jersey-common.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/org.osgi.core-4.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/osgi-resource-locator-1.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/persistence-api-1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/johnnatanmessias/Documents/workspace/SensorCityJerseyClient/lib/validation-api-1.1.0.Final.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -75,7 +75,7 @@ public class AddressService {
 	}
 
 	@GET
-	@Path("g/et/bystreet")
+	@Path("get/bystreet")
 	@Consumes(MediaType.APPLICATION_XML)
 	public List<AddressData> findAddressByStreet(
 			@QueryParam("street") String street) {
