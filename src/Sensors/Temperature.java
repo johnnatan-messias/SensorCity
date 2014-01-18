@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import data.TemperatureData;
+
 @Entity
 public class Temperature implements Serializable {
 	@Transient
@@ -34,4 +36,10 @@ public class Temperature implements Serializable {
 		this.value = value;
 	}
 
+	public  TemperatureData toTemperatureData(){
+		TemperatureData t = new TemperatureData();
+		t.setId(this.getId());
+		t.setValue(this.getValue());
+		return t;
+	}
 }

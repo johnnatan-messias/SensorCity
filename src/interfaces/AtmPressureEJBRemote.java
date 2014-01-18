@@ -12,7 +12,7 @@ public interface AtmPressureEJBRemote {
 	List<AtmPressure> findAtmPressure();
 	AtmPressure findAtmPressureById(long id);
 	AtmPressure createAtmPressure(AtmPressure atmPressure);
-	void deleteSensor(AtmPressure atmPressure);
+	void deleteAtmPressure(AtmPressure atmPressure);
 	AtmPressure updateAtmPressure(AtmPressure atmPressure);
 	List<Sensor> findSensorWithAtmPressure();
 }

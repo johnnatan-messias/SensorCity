@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import data.LuminosityData;
+
 @Entity
 public class Luminosity implements Serializable {
 	@Transient
@@ -31,6 +33,13 @@ public class Luminosity implements Serializable {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public LuminosityData toLuminosityData() {
+		LuminosityData l = new LuminosityData();
+		l.setId(this.getId());
+		l.setValue(this.getValue());
+		return l;
 	}
 
 }

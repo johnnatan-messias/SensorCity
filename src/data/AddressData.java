@@ -1,11 +1,16 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import kernel.Address;
+import kernel.Users;
+import Sensors.Sensor;
 
 @XmlRootElement
 public class AddressData {
@@ -121,4 +126,29 @@ public class AddressData {
 		this.sensors = sensors;
 	}
 
+	public Address toAddress() {
+		List<Sensor> lSensor = new ArrayList<Sensor>();
+		List<Users> lUsers = new ArrayList<Users>();
+
+		for (SensorData s : this.getSensors()) {
+			lSensor.add(s.toSensor());
+		}
+
+		for (UsersData u : this.getUsers()) {
+			lUsers.add(u.toUser());
+		}
+		Address a = new Address();
+		a.setAp(this.getAp());
+		a.setCity(a.getCity());
+		a.setCountry(this.getCountry());
+		a.setId(this.getId());
+		a.setNeighbour(this.getNeighbour());
+		a.setNum(a.getNum());
+		a.setSensors(lSensor);
+		a.setState(this.getState());
+		a.setStreet(this.getStreet());
+		a.setUsers(lUsers);
+		a.setZip(this.getZip());
+		return a;
+	}
 }

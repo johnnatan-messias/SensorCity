@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
+import Sensors.Sensor;
+
 @XmlRootElement
 public class SensorData {
 
@@ -51,6 +53,15 @@ public class SensorData {
 
 	public Date getTimestamp() {
 		return this.timestamp;
+	}
+
+	public Sensor toSensor() {
+		Sensor s = new Sensor();
+		s.setAddress(this.getAddress().toAddress());
+		s.setId(this.getId());
+		s.setName(this.getName());
+		s.setTimestamp(this.getTimestamp());
+		return s;
 	}
 
 }

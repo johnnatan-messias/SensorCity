@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import data.GPSData;
+
 @Entity
 public class GPS implements Serializable {
 	@Transient
@@ -40,6 +42,14 @@ public class GPS implements Serializable {
 
 	public void setLongitude(long longitude) {
 		this.longitude = longitude;
+	}
+
+	public GPSData toGPSData() {
+		GPSData g = new GPSData();
+		g.setId(this.getId());
+		g.setLatitude(this.getLatitude());
+		g.setLongitude(this.getLongitude());
+		return g;
 	}
 
 }

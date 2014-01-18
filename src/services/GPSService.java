@@ -2,6 +2,7 @@ package services;
 
 import interfaces.GPSEJBRemote;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,6 +18,8 @@ import javax.ws.rs.core.MediaType;
 
 import Sensors.GPS;
 import Sensors.Sensor;
+import data.GPSData;
+import data.SensorData;
 
 @Path("/sensor/type/gps")
 @Produces(MediaType.APPLICATION_XML)
@@ -27,24 +30,24 @@ public class GPSService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(GPS gps) {
+	public void create(GPSData gps) {
 		System.out.println("createGPS");
-		gpsEJB.createGPS(gps);
+		gpsEJB.createGPS(gps.toGPS());
 	}
 
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public GPS read(@QueryParam("id") long id) {
-		System.out.println("readAudio");
-		return gpsEJB.findGPSById(id);
+	public GPSData read(@QueryParam("id") long id) {
+		System.out.println("readGPS");
+		return gpsEJB.findGPSById(id).toGPSData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(GPS gps) {
+	public void update(GPSData gps) {
 		System.out.println("updateGPS");
-		gpsEJB.updateGPS(gps);
+		gpsEJB.updateGPS(gps.toGPS());
 	}
 
 	@DELETE
@@ -60,16 +63,26 @@ public class GPSService {
 	@GET
 	@Path("/get/gps")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<GPS> findGPS() {
+	public List<GPSData> findGPS() {
 		System.out.println("findGPS");
-		return gpsEJB.findGPS();
+		List<GPS> gpss = gpsEJB.findGPS();
+		List<GPSData> lGPSs = new ArrayList<GPSData>();
+		for (GPS gps : gpss) {
+			lGPSs.add(gps.toGPSData());
+		}
+		return lGPSs;
 	}
 
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Sensor> findSensorWithGPS() {
+	public List<SensorData> findSensorWithGPS() {
 		System.out.println("findSensorWithGPS");
-		return gpsEJB.findSensorWithGPS();
+		List<Sensor> sensors = gpsEJB.findSensorWithGPS();
+		List<SensorData> lSensors = new ArrayList<SensorData>();
+		for (Sensor sensor : sensors) {
+			lSensors.add(sensor.toSensorData());
+		}
+		return lSensors;
 	}
 }

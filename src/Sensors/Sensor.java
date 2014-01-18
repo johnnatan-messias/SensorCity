@@ -10,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+
 import kernel.Address;
+import data.SensorData;
 
 @Entity
 public class Sensor implements Serializable {
@@ -60,6 +62,15 @@ public class Sensor implements Serializable {
 
 	public Date getTimestamp() {
 		return this.timestamp;
+	}
+
+	public SensorData toSensorData() {
+		SensorData s = new SensorData();
+		s.setAddress(this.getAddress().toAddressData());
+		s.setId(this.getId());
+		s.setName(this.getName());
+		s.setTimestamp(this.getTimestamp());
+		return s;
 	}
 
 }

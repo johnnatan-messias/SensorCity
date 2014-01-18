@@ -2,6 +2,7 @@ package services;
 
 import interfaces.AtmPressureEJBRemote;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,8 +18,10 @@ import javax.ws.rs.core.MediaType;
 
 import Sensors.AtmPressure;
 import Sensors.Sensor;
+import data.AtmPressureData;
+import data.SensorData;
 
-@Path("/sensor/type/atmpressure")
+@Path("/sensor/type/atmPressure")
 @Produces(MediaType.APPLICATION_XML)
 public class AtmPressureService {
 
@@ -27,24 +30,24 @@ public class AtmPressureService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(AtmPressure atmPressure) {
+	public void create(AtmPressureData atmPressure) {
 		System.out.println("createAtmPressure");
-		atmPressureEJB.createAtmPressure(atmPressure);
+		atmPressureEJB.createAtmPressure(atmPressure.toAtmPressure());
 	}
 
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public AtmPressure read(@QueryParam("id") long id) {
+	public AtmPressureData read(@QueryParam("id") long id) {
 		System.out.println("readAtmPressure");
-		return atmPressureEJB.findAtmPressureById(id);
+		return atmPressureEJB.findAtmPressureById(id).toAtmPressureData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(AtmPressure atmPressure) {
+	public void update(AtmPressureData atmPressure) {
 		System.out.println("updateAtmPressure");
-		atmPressureEJB.updateAtmPressure(atmPressure);
+		atmPressureEJB.updateAtmPressure(atmPressure.toAtmPressure());
 	}
 
 	@DELETE
@@ -53,23 +56,33 @@ public class AtmPressureService {
 		System.out.println("deleteAtmPressure");
 		AtmPressure atmPressure = atmPressureEJB.findAtmPressureById(id);
 		if (atmPressure != null) {
-			atmPressureEJB.deleteSensor(atmPressure);
+			atmPressureEJB.deleteAtmPressure(atmPressure);
 		}
 	}
 
 	@GET
-	@Path("/get/atmpressure")
+	@Path("/get/atmPressure")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<AtmPressure> findAtmPressure() {
+	public List<AtmPressureData> findAtmPressure() {
 		System.out.println("findAtmPressure");
-		return atmPressureEJB.findAtmPressure();
+		List<AtmPressure> atmPressures = atmPressureEJB.findAtmPressure();
+		List<AtmPressureData> lAtmPressures = new ArrayList<AtmPressureData>();
+		for (AtmPressure atmPressure : atmPressures) {
+			lAtmPressures.add(atmPressure.toAtmPressureData());
+		}
+		return lAtmPressures;
 	}
 
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Sensor> findSensorWithAtmPressure() {
+	public List<SensorData> findSensorWithAtmPressure() {
 		System.out.println("findSensorWithAtmPressure");
-		return atmPressureEJB.findSensorWithAtmPressure();
+		List<Sensor> sensors = atmPressureEJB.findSensorWithAtmPressure();
+		List<SensorData> lSensors = new ArrayList<SensorData>();
+		for (Sensor sensor : sensors) {
+			lSensors.add(sensor.toSensorData());
+		}
+		return lSensors;
 	}
 }

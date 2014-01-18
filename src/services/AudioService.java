@@ -2,6 +2,7 @@ package services;
 
 import interfaces.AudioEJBRemote;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -17,6 +18,8 @@ import javax.ws.rs.core.MediaType;
 
 import Sensors.Audio;
 import Sensors.Sensor;
+import data.AudioData;
+import data.SensorData;
 
 @Path("/sensor/type/audio")
 @Produces(MediaType.APPLICATION_XML)
@@ -27,24 +30,24 @@ public class AudioService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(Audio audio) {
+	public void create(AudioData audio) {
 		System.out.println("createAudio");
-		audioEJB.createAudio(audio);
+		audioEJB.createAudio(audio.toAudio());
 	}
 
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public Audio read(@QueryParam("id") long id) {
+	public AudioData read(@QueryParam("id") long id) {
 		System.out.println("readAudio");
-		return audioEJB.findAudioById(id);
+		return audioEJB.findAudioById(id).toAudioData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(Audio audio) {
+	public void update(AudioData audio) {
 		System.out.println("updateAudio");
-		audioEJB.updateAudio(audio);
+		audioEJB.updateAudio(audio.toAudio());
 	}
 
 	@DELETE
@@ -60,16 +63,26 @@ public class AudioService {
 	@GET
 	@Path("/get/audio")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Audio> findAudio() {
+	public List<AudioData> findAudio() {
 		System.out.println("findAudio");
-		return audioEJB.findAudio();
+		List<Audio> audios = audioEJB.findAudio();
+		List<AudioData> lAudios = new ArrayList<AudioData>();
+		for (Audio audio : audios) {
+			lAudios.add(audio.toAudioData());
+		}
+		return lAudios;
 	}
 
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Sensor> findSensorWithAudio() {
+	public List<SensorData> findSensorWithAudio() {
 		System.out.println("findSensorWithAudio");
-		return audioEJB.findSensorWithAudio();
+		List<Sensor> sensors = audioEJB.findSensorWithAudio();
+		List<SensorData> lSensors = new ArrayList<SensorData>();
+		for (Sensor sensor : sensors) {
+			lSensors.add(sensor.toSensorData());
+		}
+		return lSensors;
 	}
 }

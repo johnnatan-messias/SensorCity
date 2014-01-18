@@ -1,6 +1,7 @@
 package kernel;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import Sensors.Sensor;
+import data.AddressData;
+import data.SensorData;
+import data.UsersData;
 
 @Entity
 public class Address implements Serializable {
@@ -132,6 +136,33 @@ public class Address implements Serializable {
 
 	public void setSensors(List<Sensor> sensors) {
 		this.sensors = sensors;
+	}
+
+	public AddressData toAddressData() {
+		List<SensorData> lSensor = new ArrayList<SensorData>();
+		List<UsersData> lUsers = new ArrayList<UsersData>();
+
+		for (Sensor s : this.getSensors()) {
+			lSensor.add(s.toSensorData());
+		}
+
+		for (Users u : this.getUsers()) {
+			lUsers.add(u.toUserData());
+		}
+		
+		AddressData a = new AddressData();
+		a.setAp(this.getAp());
+		a.setCity(a.getCity());
+		a.setCountry(this.getCountry());
+		a.setId(this.getId());
+		a.setNeighbour(this.getNeighbour());
+		a.setNum(a.getNum());
+		a.setSensors(lSensor);
+		a.setState(this.getState());
+		a.setStreet(this.getStreet());
+		a.setUsers(lUsers);
+		a.setZip(this.getZip());
+		return a;
 	}
 
 }

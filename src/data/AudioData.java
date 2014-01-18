@@ -2,6 +2,8 @@ package data;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import Sensors.Audio;
+
 @XmlRootElement
 public class AudioData {
 
@@ -26,6 +28,13 @@ public class AudioData {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public Audio toAudio() {
+		Audio a = new Audio();
+		a.setId(this.getId());
+		a.setValue(this.getValue());
+		return a;
 	}
 
 }

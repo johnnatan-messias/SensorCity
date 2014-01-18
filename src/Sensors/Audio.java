@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import data.AudioData;
+
 @Entity
 public class Audio implements Serializable {
 	@Transient
@@ -32,6 +34,13 @@ public class Audio implements Serializable {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public AudioData toAudioData() {
+		AudioData a = new AudioData();
+		a.setId(this.getId());
+		a.setValue(this.getValue());
+		return a;
 	}
 
 }

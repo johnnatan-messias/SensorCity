@@ -2,6 +2,7 @@ package services;
 
 import interfaces.SensorEJBRemote;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,6 +16,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import Sensors.Sensor;
+import data.SensorData;
 
 @Path("/sensor")
 public class SensorService {
@@ -24,24 +26,24 @@ public class SensorService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(Sensor sensor) {
+	public void create(SensorData sensor) {
 		System.out.println("createSensor");
-		sensorEJB.createSensor(sensor);
+		sensorEJB.createSensor(sensor.toSensor());
 	}
 
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public Sensor read(@QueryParam("id") long id) {
+	public SensorData read(@QueryParam("id") long id) {
 		System.out.println("readSensor");
-		return sensorEJB.findSensorById(id);
+		return sensorEJB.findSensorById(id).toSensorData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(Sensor sensor) {
+	public void update(SensorData sensor) {
 		System.out.println("updateSensor");
-		sensorEJB.updateSensor(sensor);
+		sensorEJB.updateSensor(sensor.toSensor());
 	}
 
 	@DELETE
@@ -55,19 +57,24 @@ public class SensorService {
 	}
 
 	@GET
-	@Path("/get/sensors")
+	@Path("/get/sensor")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Sensor> findSensors() {
+	public List<SensorData> findSensors() {
 		System.out.println("findSensor");
-		return sensorEJB.findSensor();
+		List<Sensor> sensors = sensorEJB.findSensor();
+		List<SensorData> lSensors = new ArrayList<SensorData>();
+		for (Sensor sensor : sensors) {
+			lSensors.add(sensor.toSensorData());
+		}
+		return lSensors;
 	}
 
 	@GET
 	@Path("/byname")
 	@Consumes(MediaType.APPLICATION_XML)
-	public Sensor findSensorByName(@QueryParam("name") String name) {
+	public SensorData findSensorByName(@QueryParam("name") String name) {
 		System.out.println("findSensorByName");
-		return sensorEJB.findSensorByName(name);
+		return sensorEJB.findSensorByName(name).toSensorData();
 	}
 
 	@GET

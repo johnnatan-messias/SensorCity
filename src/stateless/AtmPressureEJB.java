@@ -41,7 +41,7 @@ public class AtmPressureEJB implements AtmPressureEJBRemote {
 	}
 
 	@Override
-	public void deleteSensor(AtmPressure atmPressure) {
+	public void deleteAtmPressure(AtmPressure atmPressure) {
 		em.remove(em.merge(atmPressure));
 	}
 

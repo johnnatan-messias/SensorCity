@@ -2,6 +2,8 @@ package data;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import Sensors.Luminosity;
+
 @XmlRootElement
 public class LuminosityData {
 
@@ -25,6 +27,13 @@ public class LuminosityData {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public Luminosity toLuminosity() {
+		Luminosity l = new Luminosity();
+		l.setId(this.getId());
+		l.setValue(this.getValue());
+		return l;
 	}
 
 }

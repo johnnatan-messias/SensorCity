@@ -2,6 +2,7 @@ package services;
 
 import interfaces.AddressEJBRemote;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,9 +16,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import Sensors.Sensor;
 import kernel.Address;
 import kernel.Users;
-import Sensors.Sensor;
+import data.AddressData;
+import data.SensorData;
+import data.UsersData;
 
 @Path("/address")
 @Produces(MediaType.APPLICATION_XML)
@@ -27,24 +31,24 @@ public class AddressService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(Address address) {
+	public void create(AddressData address) {
 		System.out.println("createAddress");
-		addressEJB.createAddress(address);
+		addressEJB.createAddress(address.toAddress());
 	}
 
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public Address read(@QueryParam("id") long id) {
+	public AddressData read(@QueryParam("id") long id) {
 		System.out.println("readAddress");
-		return addressEJB.findAddressById(id);
+		return addressEJB.findAddressById(id).toAddressData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(Address address) {
+	public void update(AddressData address) {
 		System.out.println("updateAddress");
-		addressEJB.updateAddress(address);
+		addressEJB.updateAddress(address.toAddress());
 	}
 
 	@DELETE
@@ -60,32 +64,53 @@ public class AddressService {
 	@GET
 	@Path("/get/addresses")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Address> findAddresses() {
+	public List<AddressData> findAddresses() {
 		System.out.println("findAddresses");
-		return addressEJB.findAddress();
+		List<Address> addresses = addressEJB.findAddress();
+		List<AddressData> lAddresses = new ArrayList<AddressData>();
+		for (Address address : addresses) {
+			lAddresses.add(address.toAddressData());
+		}
+		return lAddresses;
 	}
 
 	@GET
 	@Path("g/et/bystreet")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Address> findAddressByStreet(@QueryParam("street") String street) {
+	public List<AddressData> findAddressByStreet(
+			@QueryParam("street") String street) {
 		System.out.println("findAddressByStreet");
-		return addressEJB.findAddressByStreet(street);
+		List<Address> addresses = addressEJB.findAddressByStreet(street);
+		List<AddressData> lAddresses = new ArrayList<AddressData>();
+		for (Address address : addresses) {
+			lAddresses.add(address.toAddressData());
+		}
+		return lAddresses;
 	}
 
 	@GET
 	@Path("/get/users")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Users> findUsersByAddress(@QueryParam("id") long id) {
+	public List<UsersData> findUsersByAddress(@QueryParam("id") long id) {
 		System.out.println("findUsersByAddress");
-		return addressEJB.findUsersByAddress(id);
+		List<Users> users = addressEJB.findUsersByAddress(id);
+		List<UsersData> lUsers = new ArrayList<UsersData>();
+		for (Users user : users) {
+			lUsers.add(user.toUserData());
+		}
+		return lUsers;
 	}
 
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Sensor> findSensorByAddress(@QueryParam("id") long id) {
+	public List<SensorData> findSensorByAddress(@QueryParam("id") long id) {
 		System.out.println("findSensorByAddress");
-		return addressEJB.findSensorByAddress(id);
+		List<Sensor> sensors = addressEJB.findSensorByAddress(id);
+		List<SensorData> lSensors = new ArrayList<SensorData>();
+		for (Sensor sensor : sensors) {
+			lSensors.add(sensor.toSensorData());
+		}
+		return lSensors;
 	}
 }

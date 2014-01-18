@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import data.AtmPressureData;
+
 @Entity
 public class AtmPressure implements Serializable {
 	@Transient
@@ -33,4 +35,10 @@ public class AtmPressure implements Serializable {
 		this.value = value;
 	}
 
+	public AtmPressureData toAtmPressureData() {
+		AtmPressureData a = new AtmPressureData();
+		a.setId(this.getId());
+		a.setValue(this.getValue());
+		return a;
+	}
 }

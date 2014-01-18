@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import data.UsersData;
+
 @Entity
 public class Users implements Serializable {
 	@Transient
@@ -115,6 +117,21 @@ public class Users implements Serializable {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public UsersData toUserData() {
+		UsersData u = new UsersData();
+		u.setAddress(this.getAddress().toAddressData());
+		u.setAge(this.getAge());
+		u.setDocument(this.getDocument());
+		u.setEmail(this.getEmail());
+		u.setFacebook(this.getFacebook());
+		u.setFstname(this.getFstname());
+		u.setSndname(this.getSndname());
+		u.setId(this.getId());
+		u.setPhone(this.getPhone());
+		u.setProfession(this.getProfession());
+		return u;
 	}
 
 }

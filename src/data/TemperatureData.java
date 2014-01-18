@@ -2,6 +2,8 @@ package data;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import Sensors.Temperature;
+
 @XmlRootElement
 public class TemperatureData {
 
@@ -26,6 +28,13 @@ public class TemperatureData {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public Temperature toTemperature() {
+		Temperature t = new Temperature();
+		t.setId(this.getId());
+		t.setValue(this.getValue());
+		return t;
 	}
 
 }

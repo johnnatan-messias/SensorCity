@@ -3,6 +3,8 @@ package data;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import kernel.Users;
+
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 @XmlRootElement
@@ -108,6 +110,22 @@ public class UsersData {
 
 	public void setAddress(AddressData address) {
 		this.address = address;
+	}
+
+	public Users toUser() {
+		Users u = new Users();
+		u.setAddress(this.getAddress().toAddress());
+	
+		u.setAge(this.getAge());
+		u.setDocument(this.getDocument());
+		u.setEmail(this.getEmail());
+		u.setFacebook(this.getFacebook());
+		u.setFstname(this.getFstname());
+		u.setSndname(this.getSndname());
+		u.setId(this.getId());
+		u.setPhone(this.getPhone());
+		u.setProfession(this.getProfession());
+		return u;
 	}
 
 }

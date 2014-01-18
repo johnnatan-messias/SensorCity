@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import data.HumidityData;
+
 @Entity
 public class Humidity implements Serializable {
 	@Transient
@@ -31,5 +33,12 @@ public class Humidity implements Serializable {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public HumidityData toHumidityData() {
+		HumidityData h = new HumidityData();
+		h.setId(this.getId());
+		h.setValue(this.getValue());
+		return h;
 	}
 }

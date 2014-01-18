@@ -2,6 +2,7 @@ package services;
 
 import interfaces.UsersEJBRemote;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,6 +16,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import kernel.Users;
+import data.UsersData;
 
 @Path("/user")
 public class UserService {
@@ -23,24 +25,24 @@ public class UserService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(Users user) {
+	public void create(UsersData user) {
 		System.out.println("createUser");
-		userEJB.createUsers(user);
+		userEJB.createUsers(user.toUser());
 	}
 
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public Users read(@QueryParam("id") long id) {
+	public UsersData read(@QueryParam("id") long id) {
 		System.out.println("readUser");
-		return userEJB.findUsersById(id);
+		return userEJB.findUsersById(id).toUserData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(Users user) {
+	public void update(UsersData user) {
 		System.out.println("updateUser");
-		userEJB.updateUsers(user);
+		userEJB.updateUsers(user.toUser());
 	}
 
 	@DELETE
@@ -56,16 +58,21 @@ public class UserService {
 	@GET
 	@Path("/get/users")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Users> findUsers() {
+	public List<UsersData> findUsers() {
 		System.out.println("findUsers");
-		return userEJB.findUsers();
+		List<Users> users = userEJB.findUsers();
+		List<UsersData> lUsers = new ArrayList<UsersData>();
+		for (Users user : users) {
+			lUsers.add(user.toUserData());
+		}
+		return lUsers;
 	}
 
 	@GET
 	@Path("/get/bydocument")
 	@Consumes(MediaType.APPLICATION_XML)
-	public Users findUsersByDocument(@QueryParam("document") String document) {
+	public UsersData findUsersByDocument(@QueryParam("document") String document) {
 		System.out.println("findUsersByDocument");
-		return userEJB.findUsersByDocument(document);
+		return userEJB.findUsersByDocument(document).toUserData();
 	}
 }

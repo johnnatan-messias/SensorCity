@@ -2,6 +2,7 @@ package services;
 
 import interfaces.TemperatureEJBRemote;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,9 +16,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import util.ControllerClassesService;
 import Sensors.Sensor;
 import Sensors.Temperature;
+import data.SensorData;
 import data.TemperatureData;
 
 @Path("/sensor/type/temperature")
@@ -31,9 +32,7 @@ public class TemperatureService {
 	@Consumes(MediaType.APPLICATION_XML)
 	public void create(TemperatureData temperature) {
 		System.out.println("createTemperature");
-		temperatureEJB.createTemperature(ControllerClassesService
-				.toTemperature(temperature));
-
+		temperatureEJB.createTemperature(temperature.toTemperature());
 	}
 
 	@GET
@@ -41,17 +40,15 @@ public class TemperatureService {
 	@Consumes(MediaType.APPLICATION_XML)
 	public TemperatureData read(@QueryParam("id") long id) {
 		System.out.println("readTemperature");
-		Temperature temp = temperatureEJB.findTemperatureById(id);
-		TemperatureData temperature = ControllerClassesService
-				.toTemperatureData(temp);
-		return temperature;
+		return temperatureEJB.findTemperatureById(id).toTemperatureData();
+
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(Temperature temperature) {
+	public void update(TemperatureData temperature) {
 		System.out.println("updateTemperature");
-		temperatureEJB.updateTemperature(temperature);
+		temperatureEJB.updateTemperature(temperature.toTemperature());
 	}
 
 	@DELETE
@@ -67,16 +64,26 @@ public class TemperatureService {
 	@GET
 	@Path("/get/temperature")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Temperature> findTemperature() {
+	public List<TemperatureData> findTemperature() {
 		System.out.println("findTemperature");
-		return temperatureEJB.findTemperature();
+		List<Temperature> temperatures = temperatureEJB.findTemperature();
+		List<TemperatureData> lTemperatures = new ArrayList<TemperatureData>();
+		for (Temperature temperature : temperatures) {
+			lTemperatures.add(temperature.toTemperatureData());
+		}
+		return lTemperatures;
 	}
 
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Sensor> findSensorWithTemperature() {
+	public List<SensorData> findSensorWithTemperature() {
 		System.out.println("findSensorWithTemperature");
-		return temperatureEJB.findSensorWithTemperature();
+		List<Sensor> sensors = temperatureEJB.findSensorWithTemperature();
+		List<SensorData> lSensors = new ArrayList<SensorData>();
+		for (Sensor sensor : sensors) {
+			lSensors.add(sensor.toSensorData());
+		}
+		return lSensors;
 	}
 }

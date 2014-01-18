@@ -2,6 +2,8 @@ package data;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import Sensors.Humidity;
+
 @XmlRootElement
 public class HumidityData {
 
@@ -25,5 +27,12 @@ public class HumidityData {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public Humidity toHumidity() {
+		Humidity h = new Humidity();
+		h.setId(this.getId());
+		h.setValue(this.getValue());
+		return h;
 	}
 }
