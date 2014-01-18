@@ -8,7 +8,7 @@ import Sensors.Temperature;
 public class TemperatureData {
 
 	private long id;
-	private long value;
+	private double value;
 
 	public TemperatureData() {
 
@@ -22,11 +22,11 @@ public class TemperatureData {
 		this.id = id;
 	}
 
-	public long getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 

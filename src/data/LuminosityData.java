@@ -8,7 +8,7 @@ import Sensors.Luminosity;
 public class LuminosityData {
 
 	private long id;
-	private long value;
+	private double value;
 
 	public LuminosityData() {
 	}
@@ -21,11 +21,11 @@ public class LuminosityData {
 		this.id = id;
 	}
 
-	public long getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 

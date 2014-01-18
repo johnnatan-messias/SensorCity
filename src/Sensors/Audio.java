@@ -14,7 +14,7 @@ public class Audio implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private long id;
-	private long value;
+	private double value;
 
 	public Audio() {
 
@@ -28,11 +28,11 @@ public class Audio implements Serializable {
 		this.id = id;
 	}
 
-	public long getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 

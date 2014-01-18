@@ -8,7 +8,7 @@ import Sensors.Audio;
 public class AudioData {
 
 	private long id;
-	private long value;
+	private double value;
 
 	public AudioData() {
 
@@ -22,11 +22,11 @@ public class AudioData {
 		this.id = id;
 	}
 
-	public long getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 
