@@ -16,10 +16,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import Sensors.Luminosity;
-import Sensors.Sensor;
-import data.LuminosityData;
-import data.SensorData;
+import Sensors.LuminosityEntity;
+import Sensors.SensorEntity;
+import data.Luminosity;
+import data.Sensor;
 
 @Path("/sensor/type/luminosity")
 @Produces(MediaType.APPLICATION_XML)
@@ -30,7 +30,7 @@ public class LuminosityService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(LuminosityData luminosity) {
+	public void create(Luminosity luminosity) {
 		System.out.println("createLuminosity");
 		luminosityEJB.createLuminosity(luminosity.toLuminosity());
 	}
@@ -38,14 +38,14 @@ public class LuminosityService {
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public LuminosityData read(@QueryParam("id") long id) {
+	public Luminosity read(@QueryParam("id") long id) {
 		System.out.println("readLuminosity");
 		return luminosityEJB.findLuminosityById(id).toLuminosityData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(LuminosityData luminosity) {
+	public void update(Luminosity luminosity) {
 		System.out.println("updateLuminosity");
 		luminosityEJB.updateLuminosity(luminosity.toLuminosity());
 	}
@@ -54,7 +54,7 @@ public class LuminosityService {
 	@Path("/del")
 	public void delete(@QueryParam("id") long id) {
 		System.out.println("deleteLuminosity");
-		Luminosity luminosity = luminosityEJB.findLuminosityById(id);
+		LuminosityEntity luminosity = luminosityEJB.findLuminosityById(id);
 		if (luminosity != null) {
 			luminosityEJB.deleteLuminosity(luminosity);
 		}
@@ -63,11 +63,11 @@ public class LuminosityService {
 	@GET
 	@Path("/get/luminosity")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<LuminosityData> findLuminosity() {
+	public List<Luminosity> findLuminosity() {
 		System.out.println("findLuminosity");
-		List<Luminosity> luminositys = luminosityEJB.findLuminosity();
-		List<LuminosityData> lLuminositys = new ArrayList<LuminosityData>();
-		for (Luminosity luminosity : luminositys) {
+		List<LuminosityEntity> luminositys = luminosityEJB.findLuminosity();
+		List<Luminosity> lLuminositys = new ArrayList<Luminosity>();
+		for (LuminosityEntity luminosity : luminositys) {
 			lLuminositys.add(luminosity.toLuminosityData());
 		}
 		return lLuminositys;
@@ -76,11 +76,11 @@ public class LuminosityService {
 	@GET
 	@Path("/get/luminosities")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<SensorData> findSensorWithLuminosity() {
+	public List<Sensor> findSensorWithLuminosity() {
 		System.out.println("findSensorWithLuminosity");
-		List<Sensor> sensors = luminosityEJB.findSensorWithLuminosity();
-		List<SensorData> lSensors = new ArrayList<SensorData>();
-		for (Sensor sensor : sensors) {
+		List<SensorEntity> sensors = luminosityEJB.findSensorWithLuminosity();
+		List<Sensor> lSensors = new ArrayList<Sensor>();
+		for (SensorEntity sensor : sensors) {
 			lSensors.add(sensor.toSensorData());
 		}
 		return lSensors;

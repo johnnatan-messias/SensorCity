@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import Sensors.GPS;
-import Sensors.Sensor;
+import Sensors.GPSEntity;
+import Sensors.SensorEntity;
 
 @Remote
 public interface GPSEJBRemote {
-	List<GPS> findGPS();
-	GPS findGPSById(long id);
-	GPS createGPS(GPS gps);
-	void deleteGPS(GPS gps);
-	GPS updateGPS(GPS gps);
-	List<Sensor> findSensorWithGPS();
+	List<GPSEntity> findGPS();
+	GPSEntity findGPSById(long id);
+	GPSEntity createGPS(GPSEntity gps);
+	void deleteGPS(GPSEntity gps);
+	GPSEntity updateGPS(GPSEntity gps);
+	List<SensorEntity> findSensorWithGPS();
 }

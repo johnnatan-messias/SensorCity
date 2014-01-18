@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import Sensors.Humidity;
-import Sensors.Sensor;
+import Sensors.HumidityEntity;
+import Sensors.SensorEntity;
 
 @Remote
 public interface HumidityEJBRemote {
-	List<Humidity> findHumidity();
-	Humidity findHumidityById(long id);
-	Humidity createHumidity(Humidity humidity);
-	void deleteHumidity(Humidity humidity);
-	Humidity updateHumidity(Humidity humidity);
-	List<Sensor> findSensorWithHumidity();
+	List<HumidityEntity> findHumidity();
+	HumidityEntity findHumidityById(long id);
+	HumidityEntity createHumidity(HumidityEntity humidity);
+	void deleteHumidity(HumidityEntity humidity);
+	HumidityEntity updateHumidity(HumidityEntity humidity);
+	List<SensorEntity> findSensorWithHumidity();
 }

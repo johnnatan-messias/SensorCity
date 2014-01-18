@@ -16,10 +16,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import Sensors.Audio;
-import Sensors.Sensor;
-import data.AudioData;
-import data.SensorData;
+import Sensors.AudioEntity;
+import Sensors.SensorEntity;
+import data.Audio;
+import data.Sensor;
 
 @Path("/sensor/type/audio")
 @Produces(MediaType.APPLICATION_XML)
@@ -30,7 +30,7 @@ public class AudioService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(AudioData audio) {
+	public void create(Audio audio) {
 		System.out.println("createAudio");
 		audioEJB.createAudio(audio.toAudio());
 	}
@@ -38,14 +38,14 @@ public class AudioService {
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public AudioData read(@QueryParam("id") long id) {
+	public Audio read(@QueryParam("id") long id) {
 		System.out.println("readAudio");
 		return audioEJB.findAudioById(id).toAudioData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(AudioData audio) {
+	public void update(Audio audio) {
 		System.out.println("updateAudio");
 		audioEJB.updateAudio(audio.toAudio());
 	}
@@ -54,7 +54,7 @@ public class AudioService {
 	@Path("/del")
 	public void delete(@QueryParam("id") long id) {
 		System.out.println("deleteAudio");
-		Audio audio = audioEJB.findAudioById(id);
+		AudioEntity audio = audioEJB.findAudioById(id);
 		if (audio != null) {
 			audioEJB.deleteAudio(audio);
 		}
@@ -63,11 +63,11 @@ public class AudioService {
 	@GET
 	@Path("/get/audio")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<AudioData> findAudio() {
+	public List<Audio> findAudio() {
 		System.out.println("findAudio");
-		List<Audio> audios = audioEJB.findAudio();
-		List<AudioData> lAudios = new ArrayList<AudioData>();
-		for (Audio audio : audios) {
+		List<AudioEntity> audios = audioEJB.findAudio();
+		List<Audio> lAudios = new ArrayList<Audio>();
+		for (AudioEntity audio : audios) {
 			lAudios.add(audio.toAudioData());
 		}
 		return lAudios;
@@ -76,11 +76,11 @@ public class AudioService {
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<SensorData> findSensorWithAudio() {
+	public List<Sensor> findSensorWithAudio() {
 		System.out.println("findSensorWithAudio");
-		List<Sensor> sensors = audioEJB.findSensorWithAudio();
-		List<SensorData> lSensors = new ArrayList<SensorData>();
-		for (Sensor sensor : sensors) {
+		List<SensorEntity> sensors = audioEJB.findSensorWithAudio();
+		List<Sensor> lSensors = new ArrayList<Sensor>();
+		for (SensorEntity sensor : sensors) {
 			lSensors.add(sensor.toSensorData());
 		}
 		return lSensors;

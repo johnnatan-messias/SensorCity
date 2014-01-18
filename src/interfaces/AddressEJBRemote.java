@@ -4,18 +4,18 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import Sensors.Sensor;
-import kernel.Address;
-import kernel.Users;
+import Sensors.SensorEntity;
+import kernel.AddressEntity;
+import kernel.UsersEntity;
 
 @Remote
 public interface AddressEJBRemote {
-	List<Address> findAddress();
-	Address findAddressById(long id);
-	List<Address> findAddressByStreet(String street);
-	Address createAddress(Address address);
-	void deleteAddress(Address address);
-	Address updateAddress(Address address);
-	List<Users> findUsersByAddress(long id);
-	List<Sensor> findSensorByAddress(long id);
+	List<AddressEntity> findAddress();
+	AddressEntity findAddressById(long id);
+	List<AddressEntity> findAddressByStreet(String street);
+	AddressEntity createAddress(AddressEntity address);
+	void deleteAddress(AddressEntity address);
+	AddressEntity updateAddress(AddressEntity address);
+	List<UsersEntity> findUsersByAddress(long id);
+	List<SensorEntity> findSensorByAddress(long id);
 }

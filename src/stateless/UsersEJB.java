@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import kernel.Users;
+import kernel.UsersEntity;
 import database.Commands;
 
 @Stateless
@@ -22,36 +22,36 @@ public class UsersEJB implements UsersEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<Users> findUsers() {
+	public List<UsersEntity> findUsers() {
 		Query query = em.createQuery(Commands.findUsers);
 		return query.getResultList();
 	}
 
 	@Override
-	public Users findUsersById(long id) {
-		return em.find(Users.class, id);
+	public UsersEntity findUsersById(long id) {
+		return em.find(UsersEntity.class, id);
 	}
 
 	@Override
-	public Users findUsersByDocument(String document) {
+	public UsersEntity findUsersByDocument(String document) {
 		Query query = em.createQuery(Commands.findUsersByDocument);
 		query.setParameter(Commands.value, document);
-		return (Users) query.getSingleResult();
+		return (UsersEntity) query.getSingleResult();
 	}
 
 	@Override
-	public Users createUsers(Users user) {
+	public UsersEntity createUsers(UsersEntity user) {
 		em.persist(user);
 		return user;
 	}
 
 	@Override
-	public void deleteUsers(Users user) {
+	public void deleteUsers(UsersEntity user) {
 		em.remove(em.merge(user));
 	}
 
 	@Override
-	public Users updateUsers(Users user) {
+	public UsersEntity updateUsers(UsersEntity user) {
 		return em.merge(user);
 	}
 

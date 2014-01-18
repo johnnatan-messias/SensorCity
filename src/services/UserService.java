@@ -15,8 +15,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import kernel.Users;
-import data.UsersData;
+import kernel.UsersEntity;
+import data.Users;
 
 @Path("/user")
 public class UserService {
@@ -25,7 +25,7 @@ public class UserService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(UsersData user) {
+	public void create(Users user) {
 		System.out.println("createUser");
 		userEJB.createUsers(user.toUser());
 	}
@@ -33,14 +33,14 @@ public class UserService {
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public UsersData read(@QueryParam("id") long id) {
+	public Users read(@QueryParam("id") long id) {
 		System.out.println("readUser");
 		return userEJB.findUsersById(id).toUserData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(UsersData user) {
+	public void update(Users user) {
 		System.out.println("updateUser");
 		userEJB.updateUsers(user.toUser());
 	}
@@ -49,7 +49,7 @@ public class UserService {
 	@Path("/del")
 	public void delete(@QueryParam("id") long id) {
 		System.out.println("deleteUser");
-		Users user = userEJB.findUsersById(id);
+		UsersEntity user = userEJB.findUsersById(id);
 		if (user != null) {
 			userEJB.deleteUsers(user);
 		}
@@ -58,11 +58,11 @@ public class UserService {
 	@GET
 	@Path("/get/users")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<UsersData> findUsers() {
+	public List<Users> findUsers() {
 		System.out.println("findUsers");
-		List<Users> users = userEJB.findUsers();
-		List<UsersData> lUsers = new ArrayList<UsersData>();
-		for (Users user : users) {
+		List<UsersEntity> users = userEJB.findUsers();
+		List<Users> lUsers = new ArrayList<Users>();
+		for (UsersEntity user : users) {
 			lUsers.add(user.toUserData());
 		}
 		return lUsers;
@@ -71,7 +71,7 @@ public class UserService {
 	@GET
 	@Path("/get/bydocument")
 	@Consumes(MediaType.APPLICATION_XML)
-	public UsersData findUsersByDocument(@QueryParam("document") String document) {
+	public Users findUsersByDocument(@QueryParam("document") String document) {
 		System.out.println("findUsersByDocument");
 		return userEJB.findUsersByDocument(document).toUserData();
 	}

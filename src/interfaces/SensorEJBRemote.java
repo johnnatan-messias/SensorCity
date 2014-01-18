@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import Sensors.Sensor;
+import Sensors.SensorEntity;
 
 @Remote
 public interface SensorEJBRemote {
-	List<Sensor> findSensor();
-	Sensor findSensorById(long id);
-	Sensor findSensorByName(String name);
-	Sensor createSensor(Sensor sensor);
-	void deleteSensor(Sensor sensor);
-	Sensor updateSensor(Sensor sensor);
+	List<SensorEntity> findSensor();
+	SensorEntity findSensorById(long id);
+	SensorEntity findSensorByName(String name);
+	SensorEntity createSensor(SensorEntity sensor);
+	void deleteSensor(SensorEntity sensor);
+	SensorEntity updateSensor(SensorEntity sensor);
 	boolean[] findFunctionalities(long id);
 }

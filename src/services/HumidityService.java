@@ -16,10 +16,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import Sensors.Humidity;
-import Sensors.Sensor;
-import data.HumidityData;
-import data.SensorData;
+import Sensors.HumidityEntity;
+import Sensors.SensorEntity;
+import data.Humidity;
+import data.Sensor;
 
 @Path("/sensor/type/humidity")
 @Produces(MediaType.APPLICATION_XML)
@@ -30,7 +30,7 @@ public class HumidityService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(HumidityData humidity) {
+	public void create(Humidity humidity) {
 		System.out.println("createHumidity");
 		humidityEJB.createHumidity(humidity.toHumidity());
 	}
@@ -38,14 +38,14 @@ public class HumidityService {
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public HumidityData read(@QueryParam("id") long id) {
+	public Humidity read(@QueryParam("id") long id) {
 		System.out.println("readHumidity");
 		return humidityEJB.findHumidityById(id).toHumidityData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(HumidityData humidity) {
+	public void update(Humidity humidity) {
 		System.out.println("updateHumidity");
 		humidityEJB.updateHumidity(humidity.toHumidity());
 	}
@@ -54,7 +54,7 @@ public class HumidityService {
 	@Path("/del")
 	public void delete(@QueryParam("id") long id) {
 		System.out.println("deleteHumidity");
-		Humidity humidity = humidityEJB.findHumidityById(id);
+		HumidityEntity humidity = humidityEJB.findHumidityById(id);
 		if (humidity != null) {
 			humidityEJB.deleteHumidity(humidity);
 		}
@@ -63,11 +63,11 @@ public class HumidityService {
 	@GET
 	@Path("/get/humidity")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<HumidityData> findHumidity() {
+	public List<Humidity> findHumidity() {
 		System.out.println("findHumidity");
-		List<Humidity> humiditys = humidityEJB.findHumidity();
-		List<HumidityData> lHumiditys = new ArrayList<HumidityData>();
-		for (Humidity humidity : humiditys) {
+		List<HumidityEntity> humiditys = humidityEJB.findHumidity();
+		List<Humidity> lHumiditys = new ArrayList<Humidity>();
+		for (HumidityEntity humidity : humiditys) {
 			lHumiditys.add(humidity.toHumidityData());
 		}
 		return lHumiditys;
@@ -76,11 +76,11 @@ public class HumidityService {
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<SensorData> findSensorWithHumidity() {
+	public List<Sensor> findSensorWithHumidity() {
 		System.out.println("findSensorWithHumidity");
-		List<Sensor> sensors = humidityEJB.findSensorWithHumidity();
-		List<SensorData> lSensors = new ArrayList<SensorData>();
-		for (Sensor sensor : sensors) {
+		List<SensorEntity> sensors = humidityEJB.findSensorWithHumidity();
+		List<Sensor> lSensors = new ArrayList<Sensor>();
+		for (SensorEntity sensor : sensors) {
 			lSensors.add(sensor.toSensorData());
 		}
 		return lSensors;

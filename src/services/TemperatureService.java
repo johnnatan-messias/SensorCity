@@ -16,10 +16,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import Sensors.Sensor;
-import Sensors.Temperature;
-import data.SensorData;
-import data.TemperatureData;
+import Sensors.SensorEntity;
+import Sensors.TemperatureEntity;
+import data.Sensor;
+import data.Temperature;
 
 @Path("/sensor/type/temperature")
 @Produces(MediaType.APPLICATION_XML)
@@ -30,7 +30,7 @@ public class TemperatureService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(TemperatureData temperature) {
+	public void create(Temperature temperature) {
 		System.out.println("createTemperature");
 		temperatureEJB.createTemperature(temperature.toTemperature());
 	}
@@ -38,7 +38,7 @@ public class TemperatureService {
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public TemperatureData read(@QueryParam("id") long id) {
+	public Temperature read(@QueryParam("id") long id) {
 		System.out.println("readTemperature");
 		return temperatureEJB.findTemperatureById(id).toTemperatureData();
 
@@ -46,7 +46,7 @@ public class TemperatureService {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(TemperatureData temperature) {
+	public void update(Temperature temperature) {
 		System.out.println("updateTemperature");
 		temperatureEJB.updateTemperature(temperature.toTemperature());
 	}
@@ -55,7 +55,7 @@ public class TemperatureService {
 	@Path("/del")
 	public void delete(@QueryParam("id") long id) {
 		System.out.println("deleteTemperature");
-		Temperature temperature = temperatureEJB.findTemperatureById(id);
+		TemperatureEntity temperature = temperatureEJB.findTemperatureById(id);
 		if (temperature != null) {
 			temperatureEJB.deleteTemperature(temperature);
 		}
@@ -64,11 +64,11 @@ public class TemperatureService {
 	@GET
 	@Path("/get/temperature")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<TemperatureData> findTemperature() {
+	public List<Temperature> findTemperature() {
 		System.out.println("findTemperature");
-		List<Temperature> temperatures = temperatureEJB.findTemperature();
-		List<TemperatureData> lTemperatures = new ArrayList<TemperatureData>();
-		for (Temperature temperature : temperatures) {
+		List<TemperatureEntity> temperatures = temperatureEJB.findTemperature();
+		List<Temperature> lTemperatures = new ArrayList<Temperature>();
+		for (TemperatureEntity temperature : temperatures) {
 			lTemperatures.add(temperature.toTemperatureData());
 		}
 		return lTemperatures;
@@ -77,11 +77,11 @@ public class TemperatureService {
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<SensorData> findSensorWithTemperature() {
+	public List<Sensor> findSensorWithTemperature() {
 		System.out.println("findSensorWithTemperature");
-		List<Sensor> sensors = temperatureEJB.findSensorWithTemperature();
-		List<SensorData> lSensors = new ArrayList<SensorData>();
-		for (Sensor sensor : sensors) {
+		List<SensorEntity> sensors = temperatureEJB.findSensorWithTemperature();
+		List<Sensor> lSensors = new ArrayList<Sensor>();
+		for (SensorEntity sensor : sensors) {
 			lSensors.add(sensor.toSensorData());
 		}
 		return lSensors;

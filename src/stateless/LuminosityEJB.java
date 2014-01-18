@@ -11,8 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import Sensors.Luminosity;
-import Sensors.Sensor;
+import Sensors.LuminosityEntity;
+import Sensors.SensorEntity;
 import database.Commands;
 
 @Stateless
@@ -23,34 +23,34 @@ public class LuminosityEJB implements LuminosityEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<Luminosity> findLuminosity() {
+	public List<LuminosityEntity> findLuminosity() {
 		Query query = em.createQuery(Commands.findLuminosity);
 		return query.getResultList();
 	}
 
 	@Override
-	public Luminosity findLuminosityById(long id) {
-		return em.find(Luminosity.class, id);
+	public LuminosityEntity findLuminosityById(long id) {
+		return em.find(LuminosityEntity.class, id);
 	}
 
 	@Override
-	public Luminosity createLuminosity(Luminosity luminosity) {
+	public LuminosityEntity createLuminosity(LuminosityEntity luminosity) {
 		em.persist(luminosity);
 		return luminosity;
 	}
 
 	@Override
-	public void deleteLuminosity(Luminosity luminosity) {
+	public void deleteLuminosity(LuminosityEntity luminosity) {
 		em.remove(em.merge(luminosity));
 	}
 
 	@Override
-	public Luminosity updateLuminosity(Luminosity luminosity) {
+	public LuminosityEntity updateLuminosity(LuminosityEntity luminosity) {
 		return em.merge(luminosity);
 	}
 
 	@Override
-	public List<Sensor> findSensorWithLuminosity() {
+	public List<SensorEntity> findSensorWithLuminosity() {
 		Query query = em.createQuery(Commands.findSensorWithLuminosity);
 		return query.getResultList();
 	}

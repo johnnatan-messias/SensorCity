@@ -4,14 +4,14 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import kernel.Users;
+import kernel.UsersEntity;
 
 @Remote
 public interface UsersEJBRemote {
-	List<Users> findUsers();
-	Users findUsersById(long id);
-	Users findUsersByDocument(String document);
-	Users createUsers(Users user);
-	void deleteUsers(Users user);
-	Users updateUsers(Users user);
+	List<UsersEntity> findUsers();
+	UsersEntity findUsersById(long id);
+	UsersEntity findUsersByDocument(String document);
+	UsersEntity createUsers(UsersEntity user);
+	void deleteUsers(UsersEntity user);
+	UsersEntity updateUsers(UsersEntity user);
 }

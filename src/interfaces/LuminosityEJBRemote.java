@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import Sensors.Luminosity;
-import Sensors.Sensor;
+import Sensors.LuminosityEntity;
+import Sensors.SensorEntity;
 
 @Remote
 public interface LuminosityEJBRemote {
-	List<Luminosity> findLuminosity();
-	Luminosity findLuminosityById(long id);
-	Luminosity createLuminosity(Luminosity luminosity);
-	void deleteLuminosity(Luminosity luminosity);
-	Luminosity updateLuminosity(Luminosity luminosity);
-	List<Sensor> findSensorWithLuminosity();
+	List<LuminosityEntity> findLuminosity();
+	LuminosityEntity findLuminosityById(long id);
+	LuminosityEntity createLuminosity(LuminosityEntity luminosity);
+	void deleteLuminosity(LuminosityEntity luminosity);
+	LuminosityEntity updateLuminosity(LuminosityEntity luminosity);
+	List<SensorEntity> findSensorWithLuminosity();
 }

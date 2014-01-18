@@ -11,8 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import Sensors.Audio;
-import Sensors.Sensor;
+import Sensors.AudioEntity;
+import Sensors.SensorEntity;
 import database.Commands;
 
 @Stateless
@@ -23,34 +23,34 @@ public class AudioEJB implements AudioEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<Audio> findAudio() {
+	public List<AudioEntity> findAudio() {
 		Query query = em.createQuery(Commands.findAudio);
 		return query.getResultList();
 	}
 
 	@Override
-	public Audio findAudioById(long id) {
-		return em.find(Audio.class, id);
+	public AudioEntity findAudioById(long id) {
+		return em.find(AudioEntity.class, id);
 	}
 
 	@Override
-	public Audio createAudio(Audio audio) {
+	public AudioEntity createAudio(AudioEntity audio) {
 		em.persist(audio);
 		return audio;
 	}
 
 	@Override
-	public void deleteAudio(Audio audio) {
+	public void deleteAudio(AudioEntity audio) {
 		em.remove(em.merge(audio));
 	}
 
 	@Override
-	public Audio updateAudio(Audio audio) {
+	public AudioEntity updateAudio(AudioEntity audio) {
 		return em.merge(audio);
 	}
 
 	@Override
-	public List<Sensor> findSensorWithAudio() {
+	public List<SensorEntity> findSensorWithAudio() {
 		Query query = em.createQuery(Commands.findSensorWithAudio);
 		return query.getResultList();
 	}

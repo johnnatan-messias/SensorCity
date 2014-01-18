@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import Sensors.Audio;
-import Sensors.Sensor;
+import Sensors.AudioEntity;
+import Sensors.SensorEntity;
 
 @Remote
 public interface AudioEJBRemote {
-	List<Audio> findAudio();
-	Audio findAudioById(long id);
-	Audio createAudio(Audio audio);
-	void deleteAudio(Audio audio);
-	Audio updateAudio(Audio audio);
-	List<Sensor> findSensorWithAudio();
+	List<AudioEntity> findAudio();
+	AudioEntity findAudioById(long id);
+	AudioEntity createAudio(AudioEntity audio);
+	void deleteAudio(AudioEntity audio);
+	AudioEntity updateAudio(AudioEntity audio);
+	List<SensorEntity> findSensorWithAudio();
 }

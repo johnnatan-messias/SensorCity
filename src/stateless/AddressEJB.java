@@ -11,9 +11,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import kernel.Address;
-import kernel.Users;
-import Sensors.Sensor;
+import kernel.AddressEntity;
+import kernel.UsersEntity;
+import Sensors.SensorEntity;
 import database.Commands;
 //jax-rs
 //Stateless to restfull http, websockets API
@@ -28,48 +28,48 @@ public class AddressEJB implements AddressEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<Address> findAddress() {
+	public List<AddressEntity> findAddress() {
 		Query query = em.createQuery(Commands.findAddress);
 		return query.getResultList();
 	}
 
 	@Override
-	public Address findAddressById(long id) {
-		return em.find(Address.class, id);
+	public AddressEntity findAddressById(long id) {
+		return em.find(AddressEntity.class, id);
 	}
 
 	@Override
-	public List<Address> findAddressByStreet(String street) {
+	public List<AddressEntity> findAddressByStreet(String street) {
 		Query query = em.createQuery(Commands.findAddressByStreet);
 		query.setParameter(Commands.value, street);
 		return query.getResultList();
 	}
 
 	@Override
-	public Address createAddress(Address address) {
+	public AddressEntity createAddress(AddressEntity address) {
 		em.persist(address);
 		return address;
 	}
 
 	@Override
-	public void deleteAddress(Address address) {
+	public void deleteAddress(AddressEntity address) {
 		em.remove(em.merge(address));
 	}
 
 	@Override
-	public Address updateAddress(Address address) {
+	public AddressEntity updateAddress(AddressEntity address) {
 		return em.merge(address);
 	}
 
 	@Override
-	public List<Users> findUsersByAddress(long id) {
+	public List<UsersEntity> findUsersByAddress(long id) {
 		Query query = em.createQuery(Commands.findUsersByAddress);
 		query.setParameter(Commands.id, id);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Sensor> findSensorByAddress(long id) {
+	public List<SensorEntity> findSensorByAddress(long id) {
 		Query query = em.createQuery(Commands.findSensorByAddress);
 		query.setParameter(Commands.id, id);
 		return query.getResultList();

@@ -15,8 +15,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import Sensors.Sensor;
-import data.SensorData;
+import Sensors.SensorEntity;
+import data.Sensor;
 
 @Path("/sensor")
 public class SensorService {
@@ -26,7 +26,7 @@ public class SensorService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(SensorData sensor) {
+	public void create(Sensor sensor) {
 		System.out.println("createSensor");
 		sensorEJB.createSensor(sensor.toSensor());
 	}
@@ -34,14 +34,14 @@ public class SensorService {
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public SensorData read(@QueryParam("id") long id) {
+	public Sensor read(@QueryParam("id") long id) {
 		System.out.println("readSensor");
 		return sensorEJB.findSensorById(id).toSensorData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(SensorData sensor) {
+	public void update(Sensor sensor) {
 		System.out.println("updateSensor");
 		sensorEJB.updateSensor(sensor.toSensor());
 	}
@@ -50,7 +50,7 @@ public class SensorService {
 	@Path("/del")
 	public void delete(@QueryParam("id") long id) {
 		System.out.println("deleteSensor");
-		Sensor sensor = sensorEJB.findSensorById(id);
+		SensorEntity sensor = sensorEJB.findSensorById(id);
 		if (sensor != null) {
 			sensorEJB.deleteSensor(sensor);
 		}
@@ -59,11 +59,11 @@ public class SensorService {
 	@GET
 	@Path("/get/sensor")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<SensorData> findSensors() {
+	public List<Sensor> findSensors() {
 		System.out.println("findSensor");
-		List<Sensor> sensors = sensorEJB.findSensor();
-		List<SensorData> lSensors = new ArrayList<SensorData>();
-		for (Sensor sensor : sensors) {
+		List<SensorEntity> sensors = sensorEJB.findSensor();
+		List<Sensor> lSensors = new ArrayList<Sensor>();
+		for (SensorEntity sensor : sensors) {
 			lSensors.add(sensor.toSensorData());
 		}
 		return lSensors;
@@ -72,7 +72,7 @@ public class SensorService {
 	@GET
 	@Path("/byname")
 	@Consumes(MediaType.APPLICATION_XML)
-	public SensorData findSensorByName(@QueryParam("name") String name) {
+	public Sensor findSensorByName(@QueryParam("name") String name) {
 		System.out.println("findSensorByName");
 		return sensorEJB.findSensorByName(name).toSensorData();
 	}

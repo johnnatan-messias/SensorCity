@@ -11,8 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import Sensors.GPS;
-import Sensors.Sensor;
+import Sensors.GPSEntity;
+import Sensors.SensorEntity;
 import database.Commands;
 
 @Stateless
@@ -23,35 +23,35 @@ public class GPSEJB implements GPSEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<GPS> findGPS() {
+	public List<GPSEntity> findGPS() {
 		Query query = em.createQuery(Commands.findGPS);
 		return query.getResultList();
 	}
 
 	@Override
-	public GPS findGPSById(long id) {
-		return em.find(GPS.class, id);
+	public GPSEntity findGPSById(long id) {
+		return em.find(GPSEntity.class, id);
 	}
 
 	@Override
-	public GPS createGPS(GPS gps) {
+	public GPSEntity createGPS(GPSEntity gps) {
 		em.persist(gps);
 		return gps;
 	}
 
 	@Override
-	public void deleteGPS(GPS gps) {
+	public void deleteGPS(GPSEntity gps) {
 		em.remove(em.merge(gps));
 
 	}
 
 	@Override
-	public GPS updateGPS(GPS gps) {
+	public GPSEntity updateGPS(GPSEntity gps) {
 		return em.merge(gps);
 	}
 
 	@Override
-	public List<Sensor> findSensorWithGPS() {
+	public List<SensorEntity> findSensorWithGPS() {
 		Query query = em.createQuery(Commands.findSensorWithGPS);
 		return query.getResultList();
 	}

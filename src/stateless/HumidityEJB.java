@@ -11,8 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import Sensors.Humidity;
-import Sensors.Sensor;
+import Sensors.HumidityEntity;
+import Sensors.SensorEntity;
 import database.Commands;
 
 @Stateless
@@ -23,34 +23,34 @@ public class HumidityEJB implements HumidityEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<Humidity> findHumidity() {
+	public List<HumidityEntity> findHumidity() {
 		Query query = em.createQuery(Commands.findHumidity);
 		return query.getResultList();
 	}
 
 	@Override
-	public Humidity findHumidityById(long id) {
-		return em.find(Humidity.class, id);
+	public HumidityEntity findHumidityById(long id) {
+		return em.find(HumidityEntity.class, id);
 	}
 
 	@Override
-	public Humidity createHumidity(Humidity humidity) {
+	public HumidityEntity createHumidity(HumidityEntity humidity) {
 		em.persist(humidity);
 		return humidity;
 	}
 
 	@Override
-	public void deleteHumidity(Humidity humidity) {
+	public void deleteHumidity(HumidityEntity humidity) {
 		em.remove(em.merge(humidity));
 	}
 
 	@Override
-	public Humidity updateHumidity(Humidity humidity) {
+	public HumidityEntity updateHumidity(HumidityEntity humidity) {
 		return em.merge(humidity);
 	}
 
 	@Override
-	public List<Sensor> findSensorWithHumidity() {
+	public List<SensorEntity> findSensorWithHumidity() {
 		Query query = em.createQuery(Commands.findSensorWithHumidity);
 		return query.getResultList();
 	}

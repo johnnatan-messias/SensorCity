@@ -16,12 +16,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import Sensors.Sensor;
-import kernel.Address;
-import kernel.Users;
-import data.AddressData;
-import data.SensorData;
-import data.UsersData;
+import Sensors.SensorEntity;
+import kernel.AddressEntity;
+import kernel.UsersEntity;
+import data.Address;
+import data.Sensor;
+import data.Users;
 
 @Path("/address")
 @Produces(MediaType.APPLICATION_XML)
@@ -31,7 +31,7 @@ public class AddressService {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public void create(AddressData address) {
+	public void create(Address address) {
 		System.out.println("createAddress");
 		addressEJB.createAddress(address.toAddress());
 	}
@@ -39,14 +39,14 @@ public class AddressService {
 	@GET
 	@Path("/get")
 	@Consumes(MediaType.APPLICATION_XML)
-	public AddressData read(@QueryParam("id") long id) {
+	public Address read(@QueryParam("id") long id) {
 		System.out.println("readAddress");
 		return addressEJB.findAddressById(id).toAddressData();
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_XML)
-	public void update(AddressData address) {
+	public void update(Address address) {
 		System.out.println("updateAddress");
 		addressEJB.updateAddress(address.toAddress());
 	}
@@ -55,7 +55,7 @@ public class AddressService {
 	@Path("/del")
 	public void delete(@QueryParam("id") long id) {
 		System.out.println("deleteAddress");
-		Address address = addressEJB.findAddressById(id);
+		AddressEntity address = addressEJB.findAddressById(id);
 		if (address != null) {
 			addressEJB.deleteAddress(address);
 		}
@@ -64,11 +64,11 @@ public class AddressService {
 	@GET
 	@Path("/get/addresses")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<AddressData> findAddresses() {
+	public List<Address> findAddresses() {
 		System.out.println("findAddresses");
-		List<Address> addresses = addressEJB.findAddress();
-		List<AddressData> lAddresses = new ArrayList<AddressData>();
-		for (Address address : addresses) {
+		List<AddressEntity> addresses = addressEJB.findAddress();
+		List<Address> lAddresses = new ArrayList<Address>();
+		for (AddressEntity address : addresses) {
 			lAddresses.add(address.toAddressData());
 		}
 		return lAddresses;
@@ -77,12 +77,12 @@ public class AddressService {
 	@GET
 	@Path("get/bystreet")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<AddressData> findAddressByStreet(
+	public List<Address> findAddressByStreet(
 			@QueryParam("street") String street) {
 		System.out.println("findAddressByStreet");
-		List<Address> addresses = addressEJB.findAddressByStreet(street);
-		List<AddressData> lAddresses = new ArrayList<AddressData>();
-		for (Address address : addresses) {
+		List<AddressEntity> addresses = addressEJB.findAddressByStreet(street);
+		List<Address> lAddresses = new ArrayList<Address>();
+		for (AddressEntity address : addresses) {
 			lAddresses.add(address.toAddressData());
 		}
 		return lAddresses;
@@ -91,11 +91,11 @@ public class AddressService {
 	@GET
 	@Path("/get/users")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<UsersData> findUsersByAddress(@QueryParam("id") long id) {
+	public List<Users> findUsersByAddress(@QueryParam("id") long id) {
 		System.out.println("findUsersByAddress");
-		List<Users> users = addressEJB.findUsersByAddress(id);
-		List<UsersData> lUsers = new ArrayList<UsersData>();
-		for (Users user : users) {
+		List<UsersEntity> users = addressEJB.findUsersByAddress(id);
+		List<Users> lUsers = new ArrayList<Users>();
+		for (UsersEntity user : users) {
 			lUsers.add(user.toUserData());
 		}
 		return lUsers;
@@ -104,11 +104,11 @@ public class AddressService {
 	@GET
 	@Path("/get/sensors")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<SensorData> findSensorByAddress(@QueryParam("id") long id) {
+	public List<Sensor> findSensorByAddress(@QueryParam("id") long id) {
 		System.out.println("findSensorByAddress");
-		List<Sensor> sensors = addressEJB.findSensorByAddress(id);
-		List<SensorData> lSensors = new ArrayList<SensorData>();
-		for (Sensor sensor : sensors) {
+		List<SensorEntity> sensors = addressEJB.findSensorByAddress(id);
+		List<Sensor> lSensors = new ArrayList<Sensor>();
+		for (SensorEntity sensor : sensors) {
 			lSensors.add(sensor.toSensorData());
 		}
 		return lSensors;

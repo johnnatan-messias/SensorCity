@@ -4,15 +4,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import kernel.Address;
-import kernel.Users;
-import Sensors.AtmPressure;
-import Sensors.Audio;
-import Sensors.GPS;
-import Sensors.Humidity;
-import Sensors.Luminosity;
-import Sensors.Sensor;
-import Sensors.Temperature;
+import kernel.AddressEntity;
+import kernel.UsersEntity;
+import Sensors.AtmPressureEntity;
+import Sensors.AudioEntity;
+import Sensors.GPSEntity;
+import Sensors.HumidityEntity;
+import Sensors.LuminosityEntity;
+import Sensors.SensorEntity;
+import Sensors.TemperatureEntity;
 
 public class Database {
 	/* I need to check if delete methods are ok */
@@ -33,7 +33,7 @@ public class Database {
 		return db;
 	}
 
-	public long insertUser(Users user) {
+	public long insertUser(UsersEntity user) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -46,7 +46,7 @@ public class Database {
 		return user.getId();
 	}
 
-	public long insertAddress(Address address) {
+	public long insertAddress(AddressEntity address) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -59,7 +59,7 @@ public class Database {
 		return address.getId();
 	}
 
-	public void insertAddress(Sensor sensor) {
+	public void insertAddress(SensorEntity sensor) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -71,7 +71,7 @@ public class Database {
 		}
 	}
 
-	public void insertGPS(GPS gps) {
+	public void insertGPS(GPSEntity gps) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -83,7 +83,7 @@ public class Database {
 		}
 	}
 
-	public void insertAudio(Audio audio) {
+	public void insertAudio(AudioEntity audio) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -95,7 +95,7 @@ public class Database {
 		}
 	}
 
-	public void insertHumidity(Humidity humidity) {
+	public void insertHumidity(HumidityEntity humidity) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -107,7 +107,7 @@ public class Database {
 		}
 	}
 
-	public void insertAtmPressure(AtmPressure atmPressure) {
+	public void insertAtmPressure(AtmPressureEntity atmPressure) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -119,7 +119,7 @@ public class Database {
 		}
 	}
 
-	public void insertLuminosity(Luminosity luminosity) {
+	public void insertLuminosity(LuminosityEntity luminosity) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -131,7 +131,7 @@ public class Database {
 		}
 	}
 
-	public void insertTemperature(Temperature temperature) {
+	public void insertTemperature(TemperatureEntity temperature) {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
@@ -143,13 +143,13 @@ public class Database {
 		}
 	}
 
-	public Users selectUser(int idUser) {
-		Users user = null;
+	public UsersEntity selectUser(int idUser) {
+		UsersEntity user = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			user = em.find(Users.class, idUser);
+			user = em.find(UsersEntity.class, idUser);
 			if (user == null) {
 				System.out.println("There's no user on Users");
 			}
@@ -161,13 +161,13 @@ public class Database {
 		return user;
 	}
 
-	public Address selectAddress(int idAddress) {
-		Address address = null;
+	public AddressEntity selectAddress(int idAddress) {
+		AddressEntity address = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			address = em.find(Address.class, idAddress);
+			address = em.find(AddressEntity.class, idAddress);
 			if (address == null) {
 				System.out.println("There's no address on Address");
 			}
@@ -179,13 +179,13 @@ public class Database {
 		return address;
 	}
 
-	public Sensor selectSensor(int idSensor) {
-		Sensor sensor = null;
+	public SensorEntity selectSensor(int idSensor) {
+		SensorEntity sensor = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			sensor = em.find(Sensor.class, idSensor);
+			sensor = em.find(SensorEntity.class, idSensor);
 			if (sensor == null) {
 				System.out.println("There's no sensor on Sensor");
 			}
@@ -197,13 +197,13 @@ public class Database {
 		return sensor;
 	}
 
-	public GPS selectGPS(int idGPS) {
-		GPS gps = null;
+	public GPSEntity selectGPS(int idGPS) {
+		GPSEntity gps = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			gps = em.find(GPS.class, idGPS);
+			gps = em.find(GPSEntity.class, idGPS);
 			if (gps == null) {
 				System.out.println("There's no gps on GPS");
 			}
@@ -215,13 +215,13 @@ public class Database {
 		return gps;
 	}
 
-	public Audio selectAudio(int idAudio) {
-		Audio audio = null;
+	public AudioEntity selectAudio(int idAudio) {
+		AudioEntity audio = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			audio = em.find(Audio.class, idAudio);
+			audio = em.find(AudioEntity.class, idAudio);
 			if (audio == null) {
 				System.out.println("There's no audio on Audio");
 			}
@@ -233,13 +233,13 @@ public class Database {
 		return audio;
 	}
 
-	public Humidity selectHumidity(int idHumidity) {
-		Humidity humidity = null;
+	public HumidityEntity selectHumidity(int idHumidity) {
+		HumidityEntity humidity = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			humidity = em.find(Humidity.class, idHumidity);
+			humidity = em.find(HumidityEntity.class, idHumidity);
 			if (humidity == null) {
 				System.out.println("There's no humidity on Humidity");
 			}
@@ -251,13 +251,13 @@ public class Database {
 		return humidity;
 	}
 
-	public AtmPressure selectAtmPressure(int idAtmPressure) {
-		AtmPressure atmPressure = null;
+	public AtmPressureEntity selectAtmPressure(int idAtmPressure) {
+		AtmPressureEntity atmPressure = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			atmPressure = em.find(AtmPressure.class, idAtmPressure);
+			atmPressure = em.find(AtmPressureEntity.class, idAtmPressure);
 			if (atmPressure == null) {
 				System.out.println("There's no atmPressure on AtmPressure");
 			}
@@ -269,13 +269,13 @@ public class Database {
 		return atmPressure;
 	}
 
-	public Luminosity selectLuminosity(int idLuminosity) {
-		Luminosity luminosity = null;
+	public LuminosityEntity selectLuminosity(int idLuminosity) {
+		LuminosityEntity luminosity = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			luminosity = em.find(Luminosity.class, idLuminosity);
+			luminosity = em.find(LuminosityEntity.class, idLuminosity);
 			if (luminosity == null) {
 				System.out.println("There's no luminosity on Luminosity");
 			}
@@ -287,13 +287,13 @@ public class Database {
 		return luminosity;
 	}
 
-	public Temperature selectTemperature(int idTemperature) {
-		Temperature temperature = null;
+	public TemperatureEntity selectTemperature(int idTemperature) {
+		TemperatureEntity temperature = null;
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
 			em.getTransaction().begin();
-			temperature = em.find(Temperature.class, idTemperature);
+			temperature = em.find(TemperatureEntity.class, idTemperature);
 			if (temperature == null) {
 				System.out.println("There's no temperature on Temperature");
 			}

@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import Sensors.Sensor;
+import Sensors.SensorEntity;
 import database.Commands;
 
 @Stateless
@@ -22,36 +22,36 @@ public class SensorEJB implements SensorEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<Sensor> findSensor() {
+	public List<SensorEntity> findSensor() {
 		Query query = em.createQuery(Commands.findSensor);
 		return query.getResultList();
 	}
 
 	@Override
-	public Sensor findSensorById(long id) {
-		return em.find(Sensor.class, id);
+	public SensorEntity findSensorById(long id) {
+		return em.find(SensorEntity.class, id);
 	}
 
 	@Override
-	public Sensor findSensorByName(String name) {
+	public SensorEntity findSensorByName(String name) {
 		Query query = em.createQuery(Commands.findSensorByName);
 		query.setParameter(Commands.value, name);
-		return (Sensor) query.getSingleResult();
+		return (SensorEntity) query.getSingleResult();
 	}
 
 	@Override
-	public Sensor createSensor(Sensor sensor) {
+	public SensorEntity createSensor(SensorEntity sensor) {
 		em.persist(sensor);
 		return sensor;
 	}
 
 	@Override
-	public void deleteSensor(Sensor sensor) {
+	public void deleteSensor(SensorEntity sensor) {
 		em.remove(em.merge(sensor));
 	}
 
 	@Override
-	public Sensor updateSensor(Sensor sensor) {
+	public SensorEntity updateSensor(SensorEntity sensor) {
 		return em.merge(sensor);
 	}
 

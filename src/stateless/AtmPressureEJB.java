@@ -11,8 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
-import Sensors.AtmPressure;
-import Sensors.Sensor;
+import Sensors.AtmPressureEntity;
+import Sensors.SensorEntity;
 import database.Commands;
 
 @Stateless
@@ -23,35 +23,35 @@ public class AtmPressureEJB implements AtmPressureEJBRemote {
 	private EntityManager em;
 
 	@Override
-	public List<AtmPressure> findAtmPressure() {
+	public List<AtmPressureEntity> findAtmPressure() {
 		Query query = em.createQuery(Commands.findAtmPressure);
 		return query.getResultList();
 
 	}
 
 	@Override
-	public AtmPressure findAtmPressureById(long id) {
-		return em.find(AtmPressure.class, id);
+	public AtmPressureEntity findAtmPressureById(long id) {
+		return em.find(AtmPressureEntity.class, id);
 	}
 
 	@Override
-	public AtmPressure createAtmPressure(AtmPressure atmPressure) {
+	public AtmPressureEntity createAtmPressure(AtmPressureEntity atmPressure) {
 		em.persist(atmPressure);
 		return atmPressure;
 	}
 
 	@Override
-	public void deleteAtmPressure(AtmPressure atmPressure) {
+	public void deleteAtmPressure(AtmPressureEntity atmPressure) {
 		em.remove(em.merge(atmPressure));
 	}
 
 	@Override
-	public AtmPressure updateAtmPressure(AtmPressure atmPressure) {
+	public AtmPressureEntity updateAtmPressure(AtmPressureEntity atmPressure) {
 		return em.merge(atmPressure);
 	}
 
 	@Override
-	public List<Sensor> findSensorWithAtmPressure() {
+	public List<SensorEntity> findSensorWithAtmPressure() {
 		Query query = em.createQuery(Commands.findSensorWithAtmPressure);
 		return query.getResultList();
 	}
