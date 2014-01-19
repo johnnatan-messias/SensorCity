@@ -70,7 +70,7 @@ public class SensorService {
 	}
 
 	@GET
-	@Path("/byname")
+	@Path("/get/byname")
 	@Consumes(MediaType.APPLICATION_XML)
 	public Sensor findSensorByName(@QueryParam("name") String name) {
 		System.out.println("findSensorByName");
