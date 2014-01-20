@@ -19,7 +19,7 @@ public class Sensor {
 	public Sensor() {
 	}
 
-	@XmlAttribute(name = "id")
+	//@XmlAttribute(name = "id")
 	public long getId() {
 		return id;
 	}

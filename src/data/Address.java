@@ -29,7 +29,7 @@ public class Address {
 	public Address() {
 	}
 
-	@XmlAttribute(name = "id")
+	//@XmlAttribute(name = "id")
 	public long getId() {
 		return id;
 	}

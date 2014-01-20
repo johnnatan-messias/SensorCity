@@ -19,7 +19,6 @@ import data.Address;
 public class AddressEntity implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private long id;
