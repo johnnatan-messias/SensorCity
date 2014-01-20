@@ -7,8 +7,13 @@ public class DateUtil {
 		return new java.sql.Date(date.getTime());
 	}
 
-	public static Date getLocalDate() {
+	public static Date getLocalDateSql() {
 		// SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/aaaa");
 		return new Date(new java.util.Date().getTime());
+	}
+	
+	public static java.util.Date getLocalDate() {
+		// SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/aaaa");
+		return new java.util.Date();
 	}
 }

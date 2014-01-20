@@ -1,7 +1,7 @@
 package Sensors;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import kernel.AddressEntity;
@@ -24,6 +26,7 @@ public class SensorEntity implements Serializable {
 	@Column(unique = true, nullable = false)
 	protected String name;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date timestamp;
 
 	@ManyToOne

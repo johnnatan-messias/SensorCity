@@ -4,9 +4,8 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import Sensors.SensorEntity;
 import kernel.AddressEntity;
-import kernel.UsersEntity;
+import Sensors.SensorEntity;
 
 @Remote
 public interface AddressEJBRemote {
@@ -16,6 +15,5 @@ public interface AddressEJBRemote {
 	AddressEntity createAddress(AddressEntity address);
 	void deleteAddress(AddressEntity address);
 	AddressEntity updateAddress(AddressEntity address);
-	List<UsersEntity> findUsersByAddress(long id);
 	List<SensorEntity> findSensorByAddress(long id);
 }

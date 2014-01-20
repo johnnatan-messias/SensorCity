@@ -16,12 +16,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import Sensors.SensorEntity;
 import kernel.AddressEntity;
-import kernel.UsersEntity;
+import Sensors.SensorEntity;
 import data.Address;
 import data.Sensor;
-import data.Users;
 
 @Path("/address")
 @Produces(MediaType.APPLICATION_XML)
@@ -33,7 +31,7 @@ public class AddressService {
 	@Consumes(MediaType.APPLICATION_XML)
 	public void create(Address address) {
 		System.out.println("createAddress");
-		addressEJB.createAddress(address.toAddress());
+		addressEJB.createAddress(address.toAddress());	
 	}
 
 	@GET
@@ -77,8 +75,7 @@ public class AddressService {
 	@GET
 	@Path("get/bystreet")
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Address> findAddressByStreet(
-			@QueryParam("street") String street) {
+	public List<Address> findAddressByStreet(@QueryParam("street") String street) {
 		System.out.println("findAddressByStreet");
 		List<AddressEntity> addresses = addressEJB.findAddressByStreet(street);
 		List<Address> lAddresses = new ArrayList<Address>();
@@ -88,18 +85,6 @@ public class AddressService {
 		return lAddresses;
 	}
 
-	@GET
-	@Path("/get/users")
-	@Consumes(MediaType.APPLICATION_XML)
-	public List<Users> findUsersByAddress(@QueryParam("id") long id) {
-		System.out.println("findUsersByAddress");
-		List<UsersEntity> users = addressEJB.findUsersByAddress(id);
-		List<Users> lUsers = new ArrayList<Users>();
-		for (UsersEntity user : users) {
-			lUsers.add(user.toUserData());
-		}
-		return lUsers;
-	}
 
 	@GET
 	@Path("/get/sensors")

@@ -8,7 +8,6 @@ import interfaces.HumidityEJBRemote;
 import interfaces.LuminosityEJBRemote;
 import interfaces.SensorEJBRemote;
 import interfaces.TemperatureEJBRemote;
-import interfaces.UsersEJBRemote;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -40,8 +39,6 @@ public class InsertionManager {
 	private static SensorEJBRemote sensorEJB;
 	@EJB
 	private static TemperatureEJBRemote temperatureEJB;
-	@EJB
-	private static UsersEJBRemote userEJB;
 
 	public static void deal(String msg) throws java.text.ParseException {
 		String[] instr = msg.split(";");
@@ -80,8 +77,8 @@ public class InsertionManager {
 				temperatureEJB.createTemperature(temperature);
 			}
 			SensorEJB sensorEjb = new SensorEJB();
-			SensorEntity sensor = sensorEjb
-					.findSensorById(Integer.parseInt(instr[1]));
+			SensorEntity sensor = sensorEjb.findSensorById(Integer
+					.parseInt(instr[1]));
 
 			java.sql.Date date = null;
 			DateFormat formatter = new SimpleDateFormat("yyyy MM dd HH:mm:ss");

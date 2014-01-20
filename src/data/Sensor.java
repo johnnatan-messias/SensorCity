@@ -1,11 +1,9 @@
 package data;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 import Sensors.SensorEntity;
 
@@ -30,7 +28,7 @@ public class Sensor {
 		this.id = id;
 	}
 
-	@XmlInverseReference(mappedBy = "sensors")
+	//@XmlInverseReference(mappedBy = "sensors")
 	public Address getAddress() {
 		return address;
 	}

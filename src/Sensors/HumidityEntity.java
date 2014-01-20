@@ -17,6 +17,7 @@ public class HumidityEntity implements Serializable {
 	private double value;
 
 	public HumidityEntity() {
+		
 	}
 
 	public long getId() {

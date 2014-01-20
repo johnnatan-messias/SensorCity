@@ -12,7 +12,6 @@ import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import kernel.AddressEntity;
-import kernel.UsersEntity;
 import Sensors.SensorEntity;
 import database.Commands;
 //jax-rs
@@ -61,12 +60,6 @@ public class AddressEJB implements AddressEJBRemote {
 		return em.merge(address);
 	}
 
-	@Override
-	public List<UsersEntity> findUsersByAddress(long id) {
-		Query query = em.createQuery(Commands.findUsersByAddress);
-		query.setParameter(Commands.id, id);
-		return query.getResultList();
-	}
 
 	@Override
 	public List<SensorEntity> findSensorByAddress(long id) {

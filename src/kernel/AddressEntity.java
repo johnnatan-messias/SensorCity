@@ -14,14 +14,12 @@ import javax.persistence.Transient;
 
 import Sensors.SensorEntity;
 import data.Address;
-import data.Sensor;
-import data.Users;
 
 @Entity
 public class AddressEntity implements Serializable {
 	@Transient
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private long id;
@@ -40,12 +38,15 @@ public class AddressEntity implements Serializable {
 	@Column(nullable = false)
 	private String neighbour;
 
-	@OneToMany(mappedBy = "address")
-	private List<UsersEntity> users; // 1 User just can have 1 Address. 1 Address can
-
 	// be the localization of N Users.
 	@OneToMany(mappedBy = "address")
-	private List<SensorEntity> sensors; // 1 Sensor just can have 1 Address.
+	private List<SensorEntity> sensors = new ArrayList<SensorEntity>(); // 1
+																		// Sensor
+																		// just
+																		// can
+																		// have
+																		// 1
+																		// Address.
 
 	public AddressEntity() {
 	}
@@ -86,16 +87,13 @@ public class AddressEntity implements Serializable {
 		return neighbour;
 	}
 
-	public List<UsersEntity> getUsers() {
-		return users;
-	}
-
 	public List<SensorEntity> getSensors() {
 		return sensors;
 	}
 
 	public void setId(long id) {
 		this.id = id;
+
 	}
 
 	public void setZip(String zip) {
@@ -130,39 +128,29 @@ public class AddressEntity implements Serializable {
 		this.neighbour = neighbour;
 	}
 
-	public void setUsers(List<UsersEntity> users) {
-		this.users = users;
-	}
-
 	public void setSensors(List<SensorEntity> sensors) {
 		this.sensors = sensors;
 	}
 
 	public Address toAddressData() {
-		List<Sensor> lSensor = new ArrayList<Sensor>();
-		List<Users> lUsers = new ArrayList<Users>();
+/*		List<Sensor> lSensor = new ArrayList<Sensor>();
 
 		for (SensorEntity s : this.getSensors()) {
 			lSensor.add(s.toSensorData());
-		}
 
-		for (UsersEntity u : this.getUsers()) {
-			lUsers.add(u.toUserData());
-		}
-		
+		}*/
+
 		Address a = new Address();
 		a.setAp(this.getAp());
-		a.setCity(a.getCity());
+		a.setCity(this.getCity());
 		a.setCountry(this.getCountry());
 		a.setId(this.getId());
 		a.setNeighbour(this.getNeighbour());
-		a.setNum(a.getNum());
-		a.setSensors(lSensor);
+		a.setNum(this.getNum());
+		//a.setSensors(lSensor);
 		a.setState(this.getState());
 		a.setStreet(this.getStreet());
-		a.setUsers(lUsers);
 		a.setZip(this.getZip());
 		return a;
 	}
-
 }

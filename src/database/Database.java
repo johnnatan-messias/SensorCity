@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import kernel.AddressEntity;
-import kernel.UsersEntity;
 import Sensors.AtmPressureEntity;
 import Sensors.AudioEntity;
 import Sensors.GPSEntity;
@@ -17,7 +16,7 @@ import Sensors.TemperatureEntity;
 public class Database {
 	/* I need to check if delete methods are ok */
 	/* I have problems with insertion topic and post */
-	//jdbc:derby://localhost:1527/sun-appserv-samples;create=true
+	// jdbc:derby://localhost:1527/sun-appserv-samples;create=true
 	private static Database db = null;
 	private EntityManagerFactory emf = null;
 
@@ -31,19 +30,6 @@ public class Database {
 			db = new Database();
 		}
 		return db;
-	}
-
-	public long insertUser(UsersEntity user) {
-		EntityManager em = null;
-		try {
-			em = emf.createEntityManager();
-			em.getTransaction().begin();
-			em.persist(user);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return user.getId();
 	}
 
 	public long insertAddress(AddressEntity address) {
@@ -141,24 +127,6 @@ public class Database {
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-	}
-
-	public UsersEntity selectUser(int idUser) {
-		UsersEntity user = null;
-		EntityManager em = null;
-		try {
-			em = emf.createEntityManager();
-			em.getTransaction().begin();
-			user = em.find(UsersEntity.class, idUser);
-			if (user == null) {
-				System.out.println("There's no user on Users");
-			}
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		} finally {
-			em.close();
-		}
-		return user;
 	}
 
 	public AddressEntity selectAddress(int idAddress) {
