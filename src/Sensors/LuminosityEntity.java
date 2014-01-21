@@ -16,6 +16,7 @@ public class LuminosityEntity implements Serializable {
 	private long id;
 	private double value;
 
+
 	public LuminosityEntity() {
 	}
 

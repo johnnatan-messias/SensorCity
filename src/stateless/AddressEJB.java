@@ -18,7 +18,6 @@ import database.Commands;
 //Stateless to restfull http, websockets API
 //carba
 //Why we choose this design
-
 @Stateless
 @LocalBean
 public class AddressEJB implements AddressEJBRemote {

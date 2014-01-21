@@ -1,0 +1,111 @@
+img{
+	vertical-align:middle;
+	
+}
+#img1{
+	border:0px;   
+	margin:3px;   
+	  padding-right:5px;   
+	  max-width:35px;   
+	  width:expression(this.width>150?"150px":this.width);   
+	  max-height:35px;   
+	  height:expression(this.height>150?"  150px":this.height);
+}
+
+#img2{
+	border:0px; 
+	  
+	margin:3px;   
+	  padding-right:5px;
+	  padding-left:15px;   
+	  max-width:40px;   
+	  width:expression(this.width>150?"150px":this.width);   
+	  max-height:40x;   
+	  height:expression(this.height>150?"  150px":this.height);
+	  
+}
+
+#luminosity{
+	position:fixed;
+	top:200px;
+	right:400px;
+}
+ 
+ #lamp{
+	position: fixed;
+	top:300px;
+	right:600px;
+}
+
+ #audio{
+	position: fixed;
+	top:260px;
+	left:220px;
+}
+
+ #temperature{
+	position: fixed;
+	top:300px;
+	right:800px;
+}
+#humidity{
+	position: fixed;
+	top:500px;
+	right:550px;
+}
+#atmpressure{
+	position: fixed;
+	top:350px;
+	left:130px;
+}
+ 
+ #container{
+    /* width:px; */
+     margin:5px auto;
+   /*  padding:10px; */
+  
+ }
+
+
+#header{
+   height:70px;
+   margin:0px;
+}
+    
+ #content{
+    margin:5px auto;
+    padding:0px;
+  /*   width:100%; */
+  /*    height:350px */
+     }
+    
+  
+#main{
+    /* width:590px; */
+    height:auto; 
+    margin:0px;
+  
+     text-align:left; 
+    overflow:hidden;      
+    float:left } 
+
+     
+ #sidebar{
+    width:200px;
+   /*  height:100%; */  
+    pading:0px;
+    margin:0;
+    text-align:left; 
+    overflow:hidden; 
+    float:right
+    }
+
+     #footer{
+    
+    float:right; 
+    height:20px;
+    position:absolute;
+    bottom:35px;
+    left:50px;
+    clear:both;
+ }

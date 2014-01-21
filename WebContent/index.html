@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="US-ASCII">
+<title>Insert title here</title>
+
+
+</head>
+<body onload="makeAjaxRequest();">
+       <div>
+       <table>
+       <tr>
+    <td id="audio">--.--</td>
+  <td id="humidity">--.--</td>
+      <td id="atmPressure">--.--</td>
+      
+        <td id="luminosity">--.--</td>
+          <td id="temperature">--.--</td>
+    </tr>
+  </table>
+    </div>
+      
+<script type="text/javascript">
+
+var wsocket;
+function connect() {
+   wsocket = new WebSocket("ws://localhost:8080/EJBSensorCity/sensorclient");
+   wsocket.onmessage = onMessage;
+}
+function onMessage(evt) {
+   var arraypv = evt.data.split(",");
+   document.getElementById("audio").innerHTML = arraypv[0];
+   document.getElementById("humidity").innerHTML = arraypv[1];
+   document.getElementById("atmPressure").innerHTML = arraypv[2];
+   document.getElementById("luminosity").innerHTML = arraypv[3];
+   document.getElementById("temperature").innerHTML = arraypv[4];
+}
+window.addEventListener("load", connect, false);
+</script>
+
+</html>

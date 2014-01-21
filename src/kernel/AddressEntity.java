@@ -46,7 +46,6 @@ public class AddressEntity implements Serializable {
 																		// have
 																		// 1
 																		// Address.
-
 	public AddressEntity() {
 	}
 
