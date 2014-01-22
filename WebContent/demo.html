@@ -27,7 +27,7 @@
 </head>
 <!-- NAVBAR
 ================================================== -->
-<body onload="makeAjaxRequest();" >
+<body onload="makeAjaxRequest();">
 	<div class="navbar-wrapper">
 		<div class="container">
 
@@ -133,9 +133,10 @@
 						<tr>
 							<td><img src="img/house.png" id="img2"><strong>Budapest,
 									EIT ICT Labs</strong></td>
-							<td ><img src="img/clock.png" id="img2"> <Strong id="time">--.--</Strong></td>
-							
-							
+							<td><img src="img/clock.png" id="img2"> <Strong
+								id="timestamp">-- --, ---- --:--:-- --</Strong></td>
+
+
 
 						</tr>
 					</table>
@@ -185,33 +186,35 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	
-	<script type="text/JavaScript">   
-        function showTime(){     
-        var thetime=new Date();   
-            document.getElementById( "time").innerText   = showTime(); 
-            window.setTimeout( "showTime()",1000);   
-        } 
-</script>
+
+	<script type="text/JavaScript">
+		function showTime() {
+			var thetime = new Date();
+			document.getElementById("time").innerText = showTime();
+			window.setTimeout("showTime()", 1000);
+		}
+	</script>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="dist/js/bootstrap.min.js"></script>
 	<script src="docs-assets/js/holder.js"></script>
 	<script type="text/javascript">
-var wsocket;
-function connect() {
-   wsocket = new WebSocket("ws://localhost:8080/EJBSensorCity/sensorclient");
-   wsocket.onmessage = onMessage;
-}
-function onMessage(evt) {
-   var arraypv = evt.data.split(",");
-   document.getElementById("audio").innerHTML = arraypv[0];
-   document.getElementById("humidity").innerHTML = arraypv[1];
-   document.getElementById("atmPressure").innerHTML = arraypv[2];
-   document.getElementById("luminosity").innerHTML = arraypv[3];
-   document.getElementById("temperature").innerHTML = arraypv[4];
-}
-window.addEventListener("load", connect, false);
-</script>
+		var wsocket;
+		function connect() {
+			wsocket = new WebSocket(
+					"ws://localhost:8080/EJBSensorCity/sensorclient");
+			wsocket.onmessage = onMessage;
+		}
+		function onMessage(evt) {
+			var arraypv = evt.data.split(";");
+			document.getElementById("audio").innerHTML = arraypv[0];
+			document.getElementById("humidity").innerHTML = arraypv[1];
+			document.getElementById("atmPressure").innerHTML = arraypv[2];
+			document.getElementById("luminosity").innerHTML = arraypv[3];
+			document.getElementById("temperature").innerHTML = arraypv[4];
+			document.getElementById("timestamp").innerHTML = arraypv[5];
+		}
+		window.addEventListener("load", connect, false);
+	</script>
 
 
 </body>

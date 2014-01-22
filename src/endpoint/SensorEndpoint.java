@@ -12,43 +12,46 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-
 @ServerEndpoint("/sensorclient")
 public class SensorEndpoint {
-   private static final Logger logger = Logger.getLogger("SensorEndpoint", null);
-   /* Queue for all open WebSocket sessions */
-   static Queue<Session> queue = new ConcurrentLinkedQueue<>();
+	private static final Logger logger = Logger.getLogger("SensorEndpoint",
+			null);
+	/* Queue for all open WebSocket sessions */
+	static Queue<Session> queue = new ConcurrentLinkedQueue<>();
 
-   /* PriceVolumeBean calls this method to send updates */
-   public static void send(double audio, double atmPressure,double humidity,double luminosity,double temperature) {
-      String msg = String.format("%.2f, %.2f, %.2f, %.2f, %.2f", audio, atmPressure,humidity,luminosity, temperature);
-      try {
-         /* Send updates to all open WebSocket sessions */
-         for (Session session : queue) {
-            session.getBasicRemote().sendText(msg);
-            logger.log(Level.INFO, "Sent: {0}", msg);
-         }
-      } catch (IOException e) {
-         logger.log(Level.INFO, e.toString());
-      }
-    }
-   @OnOpen
-   public void openConnection(Session session) {
-      /* Register this connection in the queue */
-      queue.add(session);
-      logger.log(Level.INFO, "Connection opened.");
-   }
+	/* calls this method to send updates */
+	public static void send(double audio, double atmPressure, double humidity,
+			double luminosity, double temperature, String timestamp) {
+		String msg = String.format("%.2f; %.2f; %.2f; %.2f; %.2f; %s", audio,
+				atmPressure, humidity, luminosity, temperature, timestamp);
+		try {
+			/* Send updates to all open WebSocket sessions */
+			for (Session session : queue) {
+				session.getBasicRemote().sendText(msg);
+				logger.log(Level.INFO, "Sent: {0}", msg);
+			}
+		} catch (IOException e) {
+			logger.log(Level.INFO, e.toString());
+		}
+	}
 
-   @OnClose
-   public void closedConnection(Session session) {
-      /* Remove this connection from the queue */
-      queue.remove(session);
-   }
+	@OnOpen
+	public void openConnection(Session session) {
+		/* Register this connection in the queue */
+		queue.add(session);
+		logger.log(Level.INFO, "Connection opened.");
+	}
 
-   @OnError
-   public void error(Session session, Throwable t) {
-      /* Remove this connection from the queue */
-      queue.remove(session);
-      logger.log(Level.INFO, "Connection error.");
-   }
+	@OnClose
+	public void closedConnection(Session session) {
+		/* Remove this connection from the queue */
+		queue.remove(session);
+	}
+
+	@OnError
+	public void error(Session session, Throwable t) {
+		/* Remove this connection from the queue */
+		queue.remove(session);
+		logger.log(Level.INFO, "Connection error.");
+	}
 }
