@@ -201,7 +201,7 @@
 		var wsocket;
 		function connect() {
 			wsocket = new WebSocket(
-					"ws://localhost:8080/EJBSensorCity/sensorclient");
+					"ws://200.239.138.155:44583/EJBSensorCity/sensorclient");
 			wsocket.onmessage = onMessage;
 		}
 		function onMessage(evt) {

@@ -22,7 +22,7 @@ public class SensorEndpoint {
 	/* calls this method to send updates */
 	public static void send(double audio, double atmPressure, double humidity,
 			double luminosity, double temperature, String timestamp) {
-		String msg = String.format("%.2f; %.2f; %.2f; %.2f %%; %.2f °C; %s", audio,
+		String msg = String.format("%.2f db; %.2f mb; %.2f %%; %.2f %%; %.2f °C; %s", audio,
 				atmPressure, humidity, luminosity, temperature, timestamp);
 		try {
 			/* Send updates to all open WebSocket sessions */
