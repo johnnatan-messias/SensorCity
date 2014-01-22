@@ -21,8 +21,7 @@ public class SensorEndpoint {
 
    /* PriceVolumeBean calls this method to send updates */
    public static void send(double audio, double atmPressure,double humidity,double luminosity,double temperature) {
-		String msg = String.format("%.2f, %.2f, %.2f, %.2f, %.2f", audio,
-				atmPressure, humidity, luminosity, temperature);
+      String msg = String.format("%.2f, %.2f, %.2f, %.2f, %.2f", audio, atmPressure,humidity,luminosity, temperature);
       try {
          /* Send updates to all open WebSocket sessions */
          for (Session session : queue) {
