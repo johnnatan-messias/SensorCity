@@ -1,0 +1,376 @@
+{
+    "fonts": [
+        {
+            "Alice": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "alice.keg"
+                }
+            ]
+        },
+        {
+            "Aachen": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Aachen-MediumPlain.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Aachen-BoldPlain.keg"
+                }
+            ]
+        },
+        {
+            "Letter": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Letter-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Letter-Bold.keg"
+                }
+            ]
+        },
+        {
+            "PTSans": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "PTSans.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "PTSans-B.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "PTSans-I.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "PTSans-BI.keg"
+                }
+            ]
+        },
+        {
+            "Futura-itao": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "futura-itao.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "futura-itao_bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "futura-itao_italic.keg"
+                }
+            ]
+        },
+        {
+            "Alegreya": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Alegreya-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Alegreya-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Alegreya-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Alegreya-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "Aleo": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Aleo-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Aleo-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Aleo-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Aleo-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "Arimo": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Arimo-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Arimo-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Arimo-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Arimo-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "Arsenal": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Arsenal-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Arsenal-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Arsenal-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Arsenal-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "Cabin": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Cabin-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Cabin-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Cabin-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Cabin-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "Heuristica": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Heuristica-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Heuristica-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Heuristica-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Heuristica-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "LeagueGothic-Condensed": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "LeagueGothic-CondensedRegular.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "LeagueGothic-CondensedItalic.keg"
+                }
+            ]
+        },
+        {
+            "LeagueGothic": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "LeagueGothic-Regular.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "LeagueGothic-Italic.keg"
+                }
+            ]
+        },
+        {
+            "NotoSans": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "NotoSans-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "NotoSans-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "NotoSans-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "NotoSans-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "PlayfairDisplay": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "PlayfairDisplay-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "PlayfairDisplay-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "PlayfairDisplay-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "PlayfairDisplay-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "Tinos": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Tinos-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Tinos-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Tinos-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Tinos-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "Titillium": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "Titillium-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "Titillium-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "Titillium-RegularItalic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "Titillium-BoldItalic.keg"
+                }
+            ]
+        },
+        {
+            "LiberationMonoPR": [
+                {
+                    "weight": "normal",
+                    "style": "normal",
+                    "file": "LiberationMonoPR-Regular.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "normal",
+                    "file": "LiberationMonoPR-Bold.keg"
+                },
+                {
+                    "weight": "normal",
+                    "style": "italic",
+                    "file": "LiberationMonoPR-Italic.keg"
+                },
+                {
+                    "weight": "bold",
+                    "style": "italic",
+                    "file": "LiberationMonoPR-BoldItalic.keg"
+                }
+            ]
+        }
+    ]
+}

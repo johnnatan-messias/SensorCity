@@ -97,31 +97,31 @@
 								<td>1</td>
 								<td>Bedroom 1</td>
 								<td>Audio</td>
-								<td id="audio">--.--</td>
+								<td id="audio">Updating...</td>
 							</tr>
 							<tr>
 								<td>2</td>
 								<td>Bedroom 1</td>
 								<td>Humidity</td>
-								<td id="humidity">--.--</td>
+								<td id="humidity">Updating...</td>
 							</tr>
 							<tr>
 								<td>3</td>
 								<td>Bedroom 1</td>
 								<td>Atmosphere Pressure</td>
-								<td id="atmPressure">--.--</td>
+								<td id="atmPressure">Updating...</td>
 							</tr>
 							<tr>
 								<td>4</td>
 								<td>Bedroom 1</td>
 								<td>Luminosity</td>
-								<td id="luminosity">--.--</td>
+								<td id="luminosity">Updating...</td>
 							</tr>
 							<tr>
 								<td>5</td>
 								<td>Bedroom 1</td>
 								<td>Temperature</td>
-								<td id="temperature">--.--</td>
+								<td id="temperature">Updating...</td>
 							</tr>
 						</tbody>
 					</table>
@@ -134,7 +134,7 @@
 							<td><img src="img/house.png" id="img2"><strong>Budapest,
 									EIT ICT Labs</strong></td>
 							<td><img src="img/clock.png" id="img2"> <Strong
-								id="timestamp">-- --, ---- --:--:-- --</Strong></td>
+								id="timestamp">Updating...</Strong></td>
 
 
 
@@ -207,8 +207,8 @@
 		function onMessage(evt) {
 			var arraypv = evt.data.split(";");
 			document.getElementById("audio").innerHTML = arraypv[0];
-			document.getElementById("humidity").innerHTML = arraypv[1];
-			document.getElementById("atmPressure").innerHTML = arraypv[2];
+			document.getElementById("atmPressure").innerHTML = arraypv[1];
+			document.getElementById("humidity").innerHTML = arraypv[2];
 			document.getElementById("luminosity").innerHTML = arraypv[3];
 			document.getElementById("temperature").innerHTML = arraypv[4];
 			document.getElementById("timestamp").innerHTML = arraypv[5];
